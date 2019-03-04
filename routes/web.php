@@ -22,6 +22,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 Auth::routes();
 
 Route::get('/student/themes', 'StudThemeController@index')->name('studtheme');
+Route::get('/student/theme/{studTheme}', 'StudThemeController@show');
+
 Route::get('/student/text', function(){
     return view('student/text');
 });

@@ -76,7 +76,7 @@
 </div>
 
 <div class="content text-center sect-2 bg-grey">
-  <h1 id="features" class="pt-5">How does it work</h1>
+  <h1 id="features" class="">How does it work</h1>
   <div class="row m-0 pb-5 pt-5" data-aos="zoom-in">
      <div class="space"></div>
      <div class="col-md-3 text-center m-4 pt-5 div-box">
@@ -121,11 +121,10 @@
     <div class="container-fluid text-center">
       <div class="row">
         <div class="col-sm-4 col-md-4 mt-md-0 mb-3 text-md-left text-sm-center">
-          <h3>App Starter</h3>   
+          <h3>JavaLearn</h3>   
       </div>
       <div class="col-sm-4 col-md-4 mb-md-0 mb-3 text-center">
-          <label>Created by <b></b></label> <br>
-          <label>JavaLearn</label>
+          <label>Created by <b></b></label>         
       </div>
       <div class="col-sm-4 col-md-4 mb-md-0 mb-3 text-md-right text-sm-center">
           <a href="#"><i class="fab fa-twitter-square h3 text-secondary"></i></a>
