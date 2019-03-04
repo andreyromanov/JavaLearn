@@ -47,7 +47,7 @@
                         <li><a href="{{ route('register') }}">Зарегистрироваться</a></li>
                         @else
                         @if(Auth::user()->role == "student")
-                        <li><a href="/student/themes">Теми</a></li>
+                        <li><a href="/student/themes">Темы</a></li>
                         <li><a href="/home">Профиль</a></li>
                         @else
                         <li><a href="teacher/themes">Мои темы</a></li>
