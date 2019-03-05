@@ -6,9 +6,10 @@
 			<div class="panel panel-default">
 				<div class="panel-heading text-center"><h3> Список моих тем</h3></div>
 				<div class="col-md-12 text-right" style="padding:20px;">
-         <button type="button" class="btn btn-success btn-lg text-center btn-block" ><a href="themes/newtheme"> Создать тему </a></button>
+					<a href="themes/newtheme" style="">
+					<button type="button" class="btn btn-success btn-lg text-center btn-block" > Создать тему </button></a>
 
-		 </div>
+				</div>
 				<div class="panel-body">
 					<table class="table table-bordered">
 						<thead class=thead-light>
@@ -24,10 +25,10 @@
 								<td> {{ $theme->theme_name }} 
 								</td>
 								<td>
-								<div class="text-center">
-          <button type="button" class="btn btn-danger  text-center" >Удалить</button>
-		  <button type="button" class="btn btn-primary text-center" >Изменить</button>
-         </div>
+									<div class="text-center">
+										<button type="button" class="btn btn-danger  text-center" >Удалить</button>
+										<button type="button" class="btn btn-primary text-center" >Изменить</button>
+									</div>
 								</td>
 							</tr>
 

@@ -38,7 +38,13 @@ class TeachThemeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        TeachTheme::create([
+            'theme_name' => $request->theme_name,
+            'theme_text' => $request->theme_text,
+            'users_id' => $request->users_id
+        ]);
+
+       return redirect()->action('TeachThemeController@index');
     }
 
     /**
@@ -52,7 +58,7 @@ class TeachThemeController extends Controller
         //
      $themeText = TeachTheme::find($teachTheme);
     // return view('student/text',['themeText'=>$themeText]);
-    }
+ }
 
     /**
      * Show the form for editing the specified resource.

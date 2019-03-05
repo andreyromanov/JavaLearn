@@ -12,6 +12,17 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    <!-- подключаем стили Summernote -->
+
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.7/summernote.css" rel="stylesheet">
+ <style type="text/css">
+     
+        .note-editing-area{
+            min-height: 200px!important;
+        }
+     
+ </style>
 </head>
 <body>
     <div id="app">
@@ -29,62 +40,80 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
-                       JavaLearn
-                    </a>
-                </div>
+                     JavaLearn
+                 </a>
+             </div>
 
-                <div class="collapse navbar-collapse" id="app-navbar-collapse">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="nav navbar-nav">
-                        &nbsp;
-                    </ul>
+             <div class="collapse navbar-collapse" id="app-navbar-collapse">
+                <!-- Left Side Of Navbar -->
+                <ul class="nav navbar-nav">
+                    &nbsp;
+                </ul>
 
-                    <!-- Right Side Of Navbar -->
-                    <ul class="nav navbar-nav navbar-right">
-                        <!-- Authentication Links -->
-                        @guest
-                        <li><a href="{{ route('login') }}">Войти</a></li>
-                        <li><a href="{{ route('register') }}">Зарегистрироваться</a></li>
-                        @else
-                        @if(Auth::user()->role == "student")
-                        <li><a href="/student/themes">Темы</a></li>
-                        <li><a href="/home">Профиль</a></li>
-                        @else
-                        <li><a href="teacher/themes">Мои темы</a></li>
-                        <li><a href="/home">Профиль</a></li>
-                        @endif
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" v-pre>
-                                {{Auth::user()->name}}<span class="caret"></span>
+                <!-- Right Side Of Navbar -->
+                <ul class="nav navbar-nav navbar-right">
+                    <!-- Authentication Links -->
+                    @guest
+                    <li><a href="{{ route('login') }}">Войти</a></li>
+                    <li><a href="{{ route('register') }}">Зарегистрироваться</a></li>
+                    @else
+                    @if(Auth::user()->role == "student")
+                    <li><a href="/student/themes">Темы</a></li>
+                    <li><a href="/home">Профиль</a></li>
+                    @else
+                    <li><a href="teacher/themes">Мои темы</a></li>
+                    <li><a href="/home">Профиль</a></li>
+                    @endif
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" v-pre>
+                            {{Auth::user()->name}}<span class="caret"></span>
+                        </a>
+
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="{{ route('logout') }}"
+                                onclick="event.preventDefault();
+                                document.getElementById('logout-form').submit();">
+                                Logout
                             </a>
 
-                            <ul class="dropdown-menu">
-                                <li>
-                                    <a href="{{ route('logout') }}"
-                                    onclick="event.preventDefault();
-                                    document.getElementById('logout-form').submit();">
-                                    Logout
-                                </a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                {{ csrf_field() }}
+                            </form>
+                        </li>
+                    </ul>
+                </li>
 
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                    {{ csrf_field() }}
-                                </form>
-                            </li>
-                        </ul>
-                    </li>
+                @endguest
 
-                        @endguest
-                        
-                    
-                </ul>
-            </div>
+
+            </ul>
         </div>
-    </nav>
+    </div>
+</nav>
 
-    @yield('content')
+@yield('content')
 </div>
 
 <!-- Scripts -->
 <script src="{{ asset('js/app.js') }}"></script>
+
+<!-- подключаем jquery -->
+
+
+
+<!-- подключаем сам summernote -->
+
+<script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.7/summernote.js"></script>
+
+<script>
+
+$(document).ready(function() {
+
+    $('#text').summernote();
+
+});
+
+</script>
 </body>
 </html>

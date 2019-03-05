@@ -49,9 +49,7 @@ class StudThemeController extends Controller
      */
     public function show(StudTheme $studTheme)
     {
-        //
-     $themeText = StudTheme::find($studTheme);
-     return view('student/text',['themeText'=>$themeText]);
+        return view('student/text', ['themeText' => $studTheme]);
     }
 
     /**

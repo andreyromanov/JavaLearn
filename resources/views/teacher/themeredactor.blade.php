@@ -6,15 +6,18 @@
 			<div class="panel panel-default">
 			
 				<div class="panel-body">
-                <form>
+  <form action="/teacher/themes/newtheme/create" method="POST">
+    {{ csrf_field() }}
   <div class="form-group">
     <label for="nameThemeInput">Название темы</label>
-    <input type="text" class="form-control" id="nameThemeInput" placeholder="Введите название темы">
+    <input type="text" name="theme_name" class="form-control" placeholder="Введите название темы">
   </div>
   <div class="form-group">
     <label for="textThemeInput">Содержание</label>
-    <textarea class="form-control" id="textThemeInput" placeholder="Введите текст"></textarea>
+    <textarea id="text" name="theme_text" class="form-control" placeholder="Введите текст"></textarea>
   </div>
+  
+  <input type="text" name="users_id" value="{{Auth::user()->id}}" >
   
   <button type="submit" class="btn btn-primary">Сохранить</button>
 </form>

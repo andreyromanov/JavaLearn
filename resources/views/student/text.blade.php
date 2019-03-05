@@ -4,20 +4,23 @@
   <div class="row">
     <div class="col-md-10 col-md-offset-1">
       <div class="panel panel-default">
-        @foreach($themeText as $text)
-        <div class="panel-heading text-center"><h3>{{$text->theme_name}}</h3></div>
+       
+        <div class="panel-heading text-center"><h3>{{$themeText->theme_name}}</h3>
+        </div>
 
         <div class="panel-body" style="padding-left: 30px;padding-right: 30px;">
           
           <p> 
-            {{$text->theme_text}}
+            {!!$themeText->theme_text!!}
+
          </p>
-          @endforeach
+         
          <div class="col-md-12 text-center">
           <button type="button" class="btn btn-primary btn-lg text-center" style="margin-top: 20px;">Начать тест</button>
          </div>
 
        </div>
+        
      </div>
    </div>
  </div>

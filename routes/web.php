@@ -32,3 +32,4 @@ Route::get('/teacher/themes', 'TeachThemeController@index')->name('professorthem
 Route::get('/teacher/themes/newtheme',function(){
     return view('teacher/themeredactor');
 });
+Route::post('/teacher/themes/newtheme/create','TeachThemeController@store');
