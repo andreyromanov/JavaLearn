@@ -27,3 +27,8 @@ Route::get('/student/theme/{studTheme}', 'StudThemeController@show');
 Route::get('/student/text', function(){
     return view('student/text');
 });
+
+Route::get('/teacher/themes', 'TeachThemeController@index')->name('professortheme');
+Route::get('/teacher/themes/newtheme',function(){
+    return view('teacher/themeredactor');
+});
