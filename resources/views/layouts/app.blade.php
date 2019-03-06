@@ -58,11 +58,11 @@
                     <li><a href="{{ route('register') }}">Зарегистрироваться</a></li>
                     @else
                     @if(Auth::user()->role == "student")
-                    <li><a href="/student/themes">Темы</a></li>
-                    <li><a href="/home">Профиль</a></li>
+                    <li><a href="{{ url('/student/themes') }}">Темы</a></li>
+                    <li><a href="{{ url('/home') }}">Профиль</a></li>
                     @else
-                    <li><a href="teacher/themes">Мои темы</a></li>
-                    <li><a href="/home">Профиль</a></li>
+                    <li><a href="{{ url('/teacher/themes') }}">Мои темы</a></li>
+                    <li><a href="{{ url('/home') }}">Профиль</a></li>
                     @endif
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" v-pre>
