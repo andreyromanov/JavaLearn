@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
     <link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/nunito-sans" type="text/css"/>
     <style type="text/css">body{font-family: 'NunitoSansRegular'!important;}</style>
-    
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 
 
 
@@ -76,26 +76,26 @@
 </div>
 
 <div class="content text-center sect-2 bg-grey">
-  <h1 id="features" class="">How does it work</h1>
+  <h1 id="features" class="">Как это работает</h1>
   <div class="row m-0 pb-5 pt-5" data-aos="zoom-in">
      <div class="space"></div>
-     <div class="col-md-3 text-center m-4 pt-5 div-box">
-        <img src="img/icons/Reload Icon1.png"> <br>
-        <label class="pt-3"><b>Sync</b> across all devices</label> 
-        <label class="pt-2">This sounded nonsense to Alice, so she said nothing, but set off at once toward the Red Queen. To her surprise.</label>
-        <label class="pt-2 mb-5"><a href="#">Watch video</a></label>
+     <div class="col-md-3 text-center m-4 pt-3 div-box">
+        <i class="far fa-user fa-5x"></i> <br>
+        <label class="pt-3"><b>Интерфейс</b></label> 
+        <label class="pt-2">Удобный пользовательский интерфейс как для ученика, так и для учителя.</label>
+       
     </div>
-    <div class="col-md-3 text-center m-4 pt-5 div-box">
-     <img src="img/icons/Inbox Icon1.png"> <br>
-     <label class="pt-3"><b>All emails</b> in one place</label>
-     <label class="pt-2">This sounded nonsense to Alice, so she said nothing, but set off at once toward the Red Queen. To her surprise.</label>
-     <label class="pt-2 mb-5"><a href="#">Watch video</a></label>
+    <div class="col-md-3 text-center m-4 pt-3 div-box">
+     <i class="fas fa-book fa-5x"></i> <br>
+     <label class="pt-3"><b>Теория</b></label>
+     <label class="pt-2">Теоритический материал позволит досконально изучить язык программирования.</label>
+     
  </div>
- <div class="col-md-3 text-center m-4 pt-5 div-box">
-     <img src="img/icons/Notifications Icon.png"> <br>
-     <label class="pt-3"><b>Notifications</b> about sales</label>
-     <label class="pt-2">This sounded nonsense to Alice, so she said nothing, but set off at once toward the Red Queen. To her surprise.</label>
-     <label class="pt-2 mb-5"><a href="#">Watch video</a></label>
+ <div class="col-md-3 text-center m-4 pt-3 div-box">
+     <i class="far fa-check-circle fa-5x"></i> <br>
+     <label class="pt-3"><b>Тесты</b></label>
+     <label class="pt-2">Грамотные тесты позволят проверить полученые теоритические знания из теории.</label>
+    
  </div>
 </div>
 </div>
@@ -106,7 +106,7 @@
   <div class="row m-0 pt-3">
     <div class="col-md-7 text-white m-auto">
       <h3><b>Java</b></h3>
-      This sounded nonsense to Alice, so she said nothing, but set off at once toward the Red Queen. To her surprise.  
+      Один из наиболее популярных языков программирования. Проиди обучение и стань настоящим специалистом!
   </div>
   <div class="col-md-5 pt-5 text-center">
       <a href="#" class="gradient-button w-button mr-3 text-white mb-5">Теория</a>
@@ -120,17 +120,11 @@
   <div class="content text-center" >
     <div class="container-fluid text-center">
       <div class="row">
-        <div class="col-sm-4 col-md-4 mt-md-0 mb-3 text-md-left text-sm-center">
-          <h3>JavaLearn</h3>   
+        
+      <div class="col-sm-12 col-md-12 mb-md-0 mb-3 text-center">
+         <h3>JavaLearn</h3>        
       </div>
-      <div class="col-sm-4 col-md-4 mb-md-0 mb-3 text-center">
-          <label>Created by <b></b></label>         
-      </div>
-      <div class="col-sm-4 col-md-4 mb-md-0 mb-3 text-md-right text-sm-center">
-          <a href="#"><i class="fab fa-twitter-square h3 text-secondary"></i></a>
-          <a href="#"><i class="fab fa-facebook-square h3 text-secondary"></i></a>
-          <a href="#"><i class="fab fa-instagram h3 text-secondary"></i></a>
-      </div>
+      
   </div>
 </div>
 </div>
