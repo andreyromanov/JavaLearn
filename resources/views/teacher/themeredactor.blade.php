@@ -17,7 +17,51 @@
     <textarea id="text" name="theme_text" class="form-control" placeholder="Введите текст"></textarea>
   </div>
   
-  <input type="text" name="users_id" value="{{Auth::user()->id}}" >
+  <input type="text" name="users_id" value="{{Auth::user()->id}}" style="display: none;">
+
+
+<h1 class="text-center">Вопросы по теме</h1>
+
+  <div class="form-group">
+    <label for="nameThemeInput">Вопрос 1</label>
+    <input type="text" name="theme_name" class="form-control" placeholder="Введите название темы">
+  </div>
+  <div class="form-group">
+    <label for="nameThemeInput">Вопрос 2</label>
+    <input type="text" name="theme_name" class="form-control" placeholder="Введите название темы">
+  </div>
+  <div class="form-group">
+    <label for="nameThemeInput">Вопрос 3</label>
+    <input type="text" name="theme_name" class="form-control" placeholder="Введите название темы">
+  </div>
+  <div class="form-group">
+    <label for="nameThemeInput">Вопрос 4</label>
+    <input type="text" name="theme_name" class="form-control" placeholder="Введите название темы">
+  </div>
+  <div class="form-group">
+    <label for="nameThemeInput">Вопрос 5</label>
+    <input type="text" name="theme_name" class="form-control" placeholder="Введите название темы">
+  </div>
+  <div class="form-group">
+    <label for="nameThemeInput">Вопрос 6</label>
+    <input type="text" name="theme_name" class="form-control" placeholder="Введите название темы">
+  </div>
+  <div class="form-group">
+    <label for="nameThemeInput">Вопрос 7</label>
+    <input type="text" name="theme_name" class="form-control" placeholder="Введите название темы">
+  </div>
+  <div class="form-group">
+    <label for="nameThemeInput">Вопрос 8</label>
+    <input type="text" name="theme_name" class="form-control" placeholder="Введите название темы">
+  </div>
+  <div class="form-group">
+    <label for="nameThemeInput">Вопрос 9</label>
+    <input type="text" name="theme_name" class="form-control" placeholder="Введите название темы">
+  </div>
+  <div class="form-group">
+    <label for="nameThemeInput">Вопрос 10</label>
+    <input type="text" name="theme_name" class="form-control" placeholder="Введите название темы">
+  </div>
   
   <button type="submit" class="btn btn-primary">Сохранить</button>
 </form>
