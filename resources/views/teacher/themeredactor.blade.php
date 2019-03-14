@@ -18,14 +18,19 @@
   </div>
   
   <input type="text" name="users_id" value="{{Auth::user()->id}}" style="display: none;">
-
-
+  <button type="submit" class="btn btn-primary">Сохранить</button>
+</form>
+@if ($cresta0 == 1)
 <h1 class="text-center">Вопросы по теме</h1>
 
-  <div class="form-group">
+ <div class="form-group">
     <label for="nameThemeInput">Вопрос 1</label>
-    <input type="text" name="theme_name" class="form-control" placeholder="Введите название темы">
+    <input type="text" name="" class="form-control" placeholder="Введите название темы">
   </div>
+@else
+@endif
+ 
+  <!--
   <div class="form-group">
     <label for="nameThemeInput">Вопрос 2</label>
     <input type="text" name="theme_name" class="form-control" placeholder="Введите название темы">
@@ -62,9 +67,8 @@
     <label for="nameThemeInput">Вопрос 10</label>
     <input type="text" name="theme_name" class="form-control" placeholder="Введите название темы">
   </div>
-  
-  <button type="submit" class="btn btn-primary">Сохранить</button>
-</form>
+  -->
+
 				</div>
 			</div>
 		</div>
