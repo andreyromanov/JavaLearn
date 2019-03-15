@@ -45,23 +45,26 @@ class TeachThemeController extends Controller
             'users_id' => $request->users_id
         ]);
 
+       //берем id текущей темы
         $themeid =  DB::table('Topic')->where('theme_name', $request->theme_name)->value('theme_id');
 
-        DB::table('questions')->insert(
-            ['questions_text' => $request->q1, 'theme_id' => $themeid]
-        );
-
-        $questionid =  DB::table('questions')->where('questions_text',$request->q1)->value('questions_id');
-
-        $data = array(
-           array('questions_id' => $questionid, 'answers_text' => $request->a11, 'answer_correctness' => $request->ca11),
-           array('questions_id' => $questionid, 'answers_text' => $request->a12, 'answer_correctness' => $request->ca12),
-           array('questions_id' => $questionid, 'answers_text' => $request->a13, 'answer_correctness' => $request->ca13),
-           array('questions_id' => $questionid, 'answers_text' => $request->a14, 'answer_correctness' => $request->ca14)
-       );
-
-        DB::table('answers')->insert($data);
-
+        for ($i = 1; $i <= 5; $i++) {
+    //создаем вопрос
+            DB::table('questions')->insert(
+                ['questions_text' => $request->{'q'.$i}, 'theme_id' => $themeid]
+            );
+        //берем id вопроса для ответов
+            $questionid =  DB::table('questions')->where('questions_text',$request->{'q'.$i})->value('questions_id');
+        //массив с вариантами к ответу
+            $data = array(
+               array('questions_id' => $questionid, 'answers_text' => $request->{'a1'.$i}, 'answer_correctness' => $request->{'ca1'.$i}),
+               array('questions_id' => $questionid, 'answers_text' => $request->{'a2'.$i}, 'answer_correctness' => $request->{'ca2'.$i}),
+               array('questions_id' => $questionid, 'answers_text' => $request->{'a3'.$i}, 'answer_correctness' => $request->{'ca3'.$i}),
+               array('questions_id' => $questionid, 'answers_text' => $request->{'a4'.$i}, 'answer_correctness' => $request->{'ca4'.$i})
+           );
+        //вставляем массив с вариантами к вопросу
+            DB::table('answers')->insert($data);
+        } 
         return redirect()->action('TeachThemeController@index');
     }
 
