@@ -30,7 +30,7 @@ Route::get('/student/text', function(){
 
 Route::get('/teacher/themes', 'TeachThemeController@index')->name('professortheme');
 Route::get('/teacher/themes/newtheme',function(){
-    return view('teacher/themeredactor', ['cresta0'=>0]);
+    return view('teacher/themeredactor');
 });
 Route::post('/teacher/themes/newtheme/create','TeachThemeController@store');
 

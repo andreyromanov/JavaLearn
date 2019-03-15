@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\TeachTheme;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class TeachThemeController extends Controller
 {
@@ -44,7 +45,24 @@ class TeachThemeController extends Controller
             'users_id' => $request->users_id
         ]);
 
-       return redirect()->action('TeachThemeController@index');
+        $themeid =  DB::table('Topic')->where('theme_name', $request->theme_name)->value('theme_id');
+
+        DB::table('questions')->insert(
+            ['questions_text' => $request->q1, 'theme_id' => $themeid]
+        );
+
+        $questionid =  DB::table('questions')->where('questions_text',$request->q1)->value('questions_id');
+
+        $data = array(
+           array('questions_id' => $questionid, 'answers_text' => $request->a11, 'answer_correctness' => $request->ca11),
+           array('questions_id' => $questionid, 'answers_text' => $request->a12, 'answer_correctness' => $request->ca12),
+           array('questions_id' => $questionid, 'answers_text' => $request->a13, 'answer_correctness' => $request->ca13),
+           array('questions_id' => $questionid, 'answers_text' => $request->a14, 'answer_correctness' => $request->ca14)
+       );
+
+        DB::table('answers')->insert($data);
+
+        return redirect()->action('TeachThemeController@index');
     }
 
     /**
@@ -56,9 +74,9 @@ class TeachThemeController extends Controller
     public function show(TeachTheme $teachTheme)
     {
         //
-     $themeText = TeachTheme::find($teachTheme);
+       $themeText = TeachTheme::find($teachTheme);
     // return view('student/text',['themeText'=>$themeText]);
- }
+   }
 
     /**
      * Show the form for editing the specified resource.
