@@ -33,4 +33,5 @@ Route::get('/teacher/themes/newtheme',function(){
     return view('teacher/themeredactor');
 });
 Route::post('/teacher/themes/newtheme/create','TeachThemeController@store');
+Route::get('/teacher/themes/delete/{id}','TeachThemeController@destroy');
 

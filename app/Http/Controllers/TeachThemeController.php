@@ -16,6 +16,8 @@ class TeachThemeController extends Controller
     public function index()
     {
 
+       // $que = DB::table('questions')->select('questions_id')->where('theme_id', '=', 13)->get();
+
         $themes = TeachTheme::all();
 
         return view('teacher/themes',['themes' => $themes]);
@@ -57,11 +59,11 @@ class TeachThemeController extends Controller
             $questionid =  DB::table('questions')->where('questions_text',$request->{'q'.$i})->value('questions_id');
         //массив с вариантами к ответу
             $data = array(
-               array('questions_id' => $questionid, 'answers_text' => $request->{'a1'.$i}, 'answer_correctness' => $request->{'ca1'.$i}),
-               array('questions_id' => $questionid, 'answers_text' => $request->{'a2'.$i}, 'answer_correctness' => $request->{'ca2'.$i}),
-               array('questions_id' => $questionid, 'answers_text' => $request->{'a3'.$i}, 'answer_correctness' => $request->{'ca3'.$i}),
-               array('questions_id' => $questionid, 'answers_text' => $request->{'a4'.$i}, 'answer_correctness' => $request->{'ca4'.$i})
-           );
+             array('questions_id' => $questionid, 'answers_text' => $request->{'a1'.$i}, 'answer_correctness' => $request->{'ca1'.$i}),
+             array('questions_id' => $questionid, 'answers_text' => $request->{'a2'.$i}, 'answer_correctness' => $request->{'ca2'.$i}),
+             array('questions_id' => $questionid, 'answers_text' => $request->{'a3'.$i}, 'answer_correctness' => $request->{'ca3'.$i}),
+             array('questions_id' => $questionid, 'answers_text' => $request->{'a4'.$i}, 'answer_correctness' => $request->{'ca4'.$i})
+         );
         //вставляем массив с вариантами к вопросу
             DB::table('answers')->insert($data);
         } 
@@ -77,9 +79,9 @@ class TeachThemeController extends Controller
     public function show(TeachTheme $teachTheme)
     {
         //
-       $themeText = TeachTheme::find($teachTheme);
+     $themeText = TeachTheme::find($teachTheme);
     // return view('student/text',['themeText'=>$themeText]);
-   }
+ }
 
     /**
      * Show the form for editing the specified resource.
@@ -110,8 +112,14 @@ class TeachThemeController extends Controller
      * @param  \App\TeachTheme  $teachTheme
      * @return \Illuminate\Http\Response
      */
-    public function destroy(TeachTheme $teachTheme)
+    public function destroy($id)
     {
-        //
+        
+
+        DB::table('Topic')->where('theme_id', $id)->delete();
+
+        $themes = TeachTheme::all();
+
+        return redirect()->action('TeachThemeController@index');
     }
 }

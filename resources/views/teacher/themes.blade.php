@@ -5,6 +5,7 @@
 		<div class="col-md-10 col-md-offset-1">
 			<div class="panel panel-default">
 				<div class="panel-heading text-center"><h3> Список моих тем</h3></div>
+
 				<div class="col-md-12 text-right" style="padding:20px;">
 					<a href="themes/newtheme" style="">
 					<button type="button" class="btn btn-success btn-lg text-center btn-block" > Создать тему </button></a>
@@ -26,7 +27,7 @@
 								</td>
 								<td>
 									<div class="text-center">
-										<button type="button" class="btn btn-danger  text-center" >Удалить</button>
+										<a href="themes/delete/{{ $theme->theme_id }}" style=""><button type="button" class="btn btn-danger  text-center" >Удалить</button></a>
 										<button type="button" class="btn btn-primary text-center" >Изменить</button>
 									</div>
 								</td>
