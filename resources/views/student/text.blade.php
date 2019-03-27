@@ -16,7 +16,7 @@
          </p>
          
          <div class="col-md-12 text-center">
-          <button type="button" class="btn btn-primary btn-lg text-center" style="margin-top: 20px;">Начать тест</button>
+          <button type="button" class="btn btn-primary btn-lg text-center" style="margin-top: 20px;"><a style="text-decoration: none; color:white" href="test/{{$themeText->theme_id}}">Начать тест</a></button>
          </div>
 
        </div>

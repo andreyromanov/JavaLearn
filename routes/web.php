@@ -23,6 +23,9 @@ Auth::routes();
 
 Route::get('/student/themes', 'StudThemeController@index')->name('studtheme');
 Route::get('/student/theme/{studTheme}', 'StudThemeController@show');
+Route::get('/student/theme/test/{studTheme}', 'StudTestController@index');
+Route::post('/student/theme/test/pass','StudTestController@pass');
+
 
 Route::get('/student/text', function(){
     return view('student/text');

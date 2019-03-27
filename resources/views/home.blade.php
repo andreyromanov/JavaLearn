@@ -17,17 +17,12 @@
 
 
         @if ( Auth::user()->role=="teacher")
-        <div class="panel-heading"> Оценки учеников</div>
+        <div class="panel-heading text-center" > Оценки учеников</div>
         <?
         $i=1;
         $object = new stdClass();
         $object->property1 = 'Here we go';
-
-
-
-
         echo $object->{'property'.$i} 
-
         ?>
         <div class="panel-body">
           <form>
@@ -39,26 +34,39 @@
           </form>
           <table class="table">
             <tbody>
+            <th>Название темы</th>
+            <th>ФИ ученика</th>
+            <th>Оценка</th>
+            <th>Дата прохождения</th>
+            @foreach ($teachtest as $teachtest)
               <tr>
-                <td><a href="ссылка на тему">Название темы</a></td>
-                <td>Петечка Иванов</td>
-                <td>9/10</td>
-                <td>20.03.2019</td>
+                <td><a href="ссылка на тему">{{$teachtest->theme_name}}</a></td>
+                <td>{{$teachtest->surname}} {{$teachtest->name}}</td>
+                <td>{{$teachtest->testing_mark}}</td>
+                <td>{{$teachtest->testing_date}}</td>
               </tr>
+              @endforeach
             </tbody>
           </table>
         </div>
 
         @elseif( Auth::user()->role=="student")
+        
         <div class="panel-heading text-center">Пройденные тесты</div>
         <div class="panel-body">
           <table class="table">
             <tbody>
+            <th>Название темы</th>
+            <th>Оценка</th>
+            <th>Дата прохождения теста</th>
+            @foreach ($test as $test)
+            
               <tr>
-                <td><a href="ссылка на тему">Название темы</a></td>
-                <td>9/10</td>
-                <td>20.03.2019</td>
+                <td><a href="ссылка на тему">{{$test->theme_name}}</a></td>
+                <td>{{$test->testing_mark}}</td>
+                <td>{{$test->testing_date}}</td>
               </tr>
+              @endforeach
             </tbody>
           </table>
 
