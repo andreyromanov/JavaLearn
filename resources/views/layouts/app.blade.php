@@ -54,14 +54,18 @@
                 <ul class="nav navbar-nav navbar-right">
                     <!-- Authentication Links -->
                     @guest
+                    <li><a href="/themes">Темы</a></li>
+                    <li><a href="/results">Результаты</a></li>
                     <li><a href="{{ route('login') }}">Войти</a></li>
                     <li><a href="{{ route('register') }}">Зарегистрироваться</a></li>
                     @else
                     @if(Auth::user()->role == "student")
                     <li><a href="{{ url('/student/themes') }}">Темы</a></li>
+                    <li><a href="/results">Результаты</a></li>
                     <li><a href="{{ url('/home') }}">Профиль</a></li>
                     @else
                     <li><a href="{{ url('/teacher/themes') }}">Мои темы</a></li>
+                    <li><a href="/results">Результаты</a></li>
                     <li><a href="{{ url('/home') }}">Профиль</a></li>
                     @endif
                     <li class="dropdown">
@@ -96,6 +100,7 @@
 </div>
 
 <!-- Scripts -->
+<script src="{{ asset('js/script.js') }}"></script>
 <script src="{{ asset('js/app.js') }}"></script>
 
 <!-- подключаем jquery -->

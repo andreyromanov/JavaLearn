@@ -17,9 +17,17 @@ Route::get('/', function () {
 
 Auth::routes();
 
+Route::get('/results', 'ResultController@index');
+
 Route::get('/home', 'HomeController@index')->name('home');
 
 Auth::routes();
+
+Route::get('/themes', 'StudThemeController@index')->name('studtheme');
+Route::get('/theme/{studTheme}', 'StudThemeController@show');
+Route::get('/theme/test/{studTheme}', 'StudTestController@indexGuest');
+Route::post('/theme/test/pass','StudTestController@passGuest');
+
 
 Route::get('/student/themes', 'StudThemeController@index')->name('studtheme');
 Route::get('/student/theme/{studTheme}', 'StudThemeController@show');

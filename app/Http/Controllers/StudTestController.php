@@ -41,6 +41,23 @@ class StudTestController extends Controller
         return view('student/test', ['answerr' => $answer, 'test'=>$test,'question_id' => $question_id, 'question_ids' => $question_ids, 'quiz' => $quiz, 'answer1' => $answer1,'studTheme'=>$studTheme]);
     }
 
+    public function indexGuest($studTheme)
+    {
+
+        $quiz = DB::table('Topic')->select('theme_name', 'theme_id')->where('theme_id', '=', $studTheme)->get();
+
+        $question_ids = DB::table('Questions')->select('questions_text', 'questions_id')->where('theme_id', '=', $studTheme)->get();
+        $question_id = DB::table('Questions')->select('questions_id')->where('theme_id', '=', $studTheme)->get();
+
+
+        $answer = DB::table('Answers')->select('answers_id', 'answers_text', 'questions_id')->where('questions_id', '=', 1)->get();
+        $answer1 = DB::table('Answers')->select('answers_id', 'answers_text', 'questions_id')->where('answers_id', '=', 1)->get();
+
+        $test =  DB::table('Topic')->JOIN('Questions', 'Topic.theme_id', '=', 'Questions.theme_id')->JOIN('Answers', 'Questions.questions_id', '=', 'Answers.questions_id')->where('topic.theme_id', $studTheme)->distinct()->get();
+
+        return view('/test', ['answerr' => $answer, 'test'=>$test,'question_id' => $question_id, 'question_ids' => $question_ids, 'quiz' => $quiz, 'answer1' => $answer1,'studTheme'=>$studTheme]);
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -70,12 +87,17 @@ class StudTestController extends Controller
             'theme_id' => $request->theme_id,
         ]);
 
-        
-            //вставляем массив с вариантами к вопросу
-           // DB::table('answers')->get($data);
-        
         return redirect()->route('home');
     }
+
+    public function passGuest(Request $request)
+    {
+
+        $testing_mark = $request['1'] + $request['2'] +$request['3'] +$request['4'] +$request['5'];
+              
+        return view('mark')->with(['mark'=>$testing_mark]);
+    }
+
 
     /**
      * Display the specified resource.
