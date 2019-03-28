@@ -79,7 +79,7 @@ class StudTestController extends Controller
 
         $testing_mark = $request['1'] + $request['2'] +$request['3'] +$request['4'] +$request['5'];
         $pass_date =new \DateTime('now');
-        StudTest::create([
+        StudTest::updateOrCreate([
             'users_id' => $request->users_id,
             'testing_mark' => $testing_mark,
             

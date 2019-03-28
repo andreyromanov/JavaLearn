@@ -4,9 +4,9 @@
 	<div class="row">
 		<div class="col-md-10 col-md-offset-1">
 			<div class="panel panel-default">
-				<div class="panel-heading text-center"><h3> Список тем</h3></div>
+				<div class="panel-heading text-center"><h4> Список тем</h4></div>
 
-				<div class="panel-body">
+				
 					<table class="table table-bordered">
 						<thead class=thead-light>
 							<tr>
@@ -28,7 +28,6 @@
 						</tbody>
 					</table>
 
-				</div>
 			</div>
 		</div>
 	</div>

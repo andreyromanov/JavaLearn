@@ -71,8 +71,8 @@
                         <div id="lvl" class="form-group" style="display: none;">
                             <label  class="col-md-4 control-label">Уровень образования</label>
                             <div class="col-md-6">
-                                <select name="level" class="form-control" required="">
-                                    <option>---</option>
+                                <select name="level" class="form-control" >
+                                    <option value="">---</option>
                                     <option value="Ученик">Ученик</option>
                                     <option value="Младший специалист">Младший специалист</option>
                                     <option value="Бакалавр">Бакалавр</option>
@@ -85,8 +85,7 @@
                             <label for="age" class="col-md-4 control-label">Возраст</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="number" class="form-control" name="age" value="{{ old('age') }}"
-                                    required >
+                                <input id="name" type="number" class="form-control" name="age" value="{{ old('age') }}">
                             </div>
                         </div>
 
