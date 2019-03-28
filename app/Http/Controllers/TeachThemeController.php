@@ -51,10 +51,10 @@ class TeachThemeController extends Controller
        //берем id текущей темы
         $themeid =  DB::table('Topic')->where('theme_name', $request->theme_name)->value('theme_id');
 
-        for ($i = 1; $i <= 5; $i++) {
+        for ($i = 1; $i <= 4; $i++) {
     //создаем вопрос
             DB::table('questions')->insert(
-                ['questions_text' => $request->{'q'.$i}, 'theme_id' => $themeid]
+                ['questions_text' => $request->{'q'.$i}, 'theme_id' => $themeid, 'question_type' => 'test']
             );
         //берем id вопроса для ответов
             $questionid =  DB::table('questions')->where('questions_text',$request->{'q'.$i})->value('questions_id');
@@ -68,6 +68,16 @@ class TeachThemeController extends Controller
         //вставляем массив с вариантами к вопросу
             DB::table('answers')->insert($data);
         } 
+        //fill
+        DB::table('questions')->insert(
+            ['questions_text' => $request->{'q5'}, 'theme_id' => $themeid, 'question_type' => 'fill']
+        );
+        //берем id вопроса для ответов
+        $questionid =  DB::table('questions')->where('questions_text',$request->{'q5'})->value('questions_id');
+        
+        DB::table('answers')->insert(
+            ['questions_id' => $questionid, 'answers_text' => $request->{'a15'}, 'answer_correctness' => 2 ]
+        );
         return redirect()->action('TeachThemeController@index');
     }
 

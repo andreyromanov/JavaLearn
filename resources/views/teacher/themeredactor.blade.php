@@ -101,24 +101,16 @@
               </div>
             </div>
 
-            <!--ВОПРОС 5-->
+            <!--ВОПРОС 5 ПОДСТАНОВКА -->
             <div class="form-group">
               <br><br>
               <label for="nameThemeInput">Вопрос 5</label>
-              <input type="text" name="q5" class="form-control" placeholder="Введите вопрос 4" required="">
+              <input type="text" name="q5" class="form-control" placeholder="Введите вопрос 5" required="">
               <br>
-              <div class="col-md-3"><input type="text" name="a15" class="form-control" style="width:90%;display:inline;" placeholder="Вариант 1" required="">
-                <input class="form-check-input" style="float: right;margin-top: 10px;transform: scale(1.3);" type="checkbox" name="ca15" value="1" id="defaultCheck1">
+              <div class="col-md-3"><input type="text" name="a15" class="form-control" style="display:inline;" placeholder="Правильный ответ ..." required="">
+                
               </div>
-              <div class="col-md-3"><input type="text" name="a25" class="form-control" style="width:90%;display:inline;" placeholder="Вариант 2" required="">
-                <input class="form-check-input" style="float: right;margin-top: 10px;transform: scale(1.3);" type="checkbox" name="ca25" value="1" id="defaultCheck1">
-              </div>
-              <div class="col-md-3"><input type="text" name="a35" class="form-control" style="width:90%;display:inline;" placeholder="Вариант 3" required="">
-                <input class="form-check-input" style="float: right;margin-top: 10px;transform: scale(1.3);" type="checkbox" name="ca35" value="1" id="defaultCheck1">
-              </div>
-              <div class="col-md-3"><input type="text" name="a45" class="form-control" style="width:90%;display:inline;" placeholder="Вариант 4" required="">
-                <input class="form-check-input" style="float: right;margin-top: 10px;transform: scale(1.3);" type="checkbox" name="ca45" value="1" id="defaultCheck1">
-              </div>
+           
             </div>
 
             <br>

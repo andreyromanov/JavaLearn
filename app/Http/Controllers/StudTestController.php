@@ -29,7 +29,7 @@ class StudTestController extends Controller
 
         $quiz = DB::table('Topic')->select('theme_name', 'theme_id')->where('theme_id', '=', $studTheme)->get();
 
-        $question_ids = DB::table('Questions')->select('questions_text', 'questions_id')->where('theme_id', '=', $studTheme)->get();
+        $question_ids = DB::table('Questions')->select('questions_text', 'questions_id', 'question_type')->where('theme_id', '=', $studTheme)->get();
         $question_id = DB::table('Questions')->select('questions_id')->where('theme_id', '=', $studTheme)->get();
 
 
@@ -46,7 +46,7 @@ class StudTestController extends Controller
 
         $quiz = DB::table('Topic')->select('theme_name', 'theme_id')->where('theme_id', '=', $studTheme)->get();
 
-        $question_ids = DB::table('Questions')->select('questions_text', 'questions_id')->where('theme_id', '=', $studTheme)->get();
+        $question_ids = DB::table('Questions')->select('questions_text', 'questions_id', 'question_type')->where('theme_id', '=', $studTheme)->get();
         $question_id = DB::table('Questions')->select('questions_id')->where('theme_id', '=', $studTheme)->get();
 
 
@@ -77,7 +77,10 @@ class StudTestController extends Controller
     public function pass(Request $request)
     {
 
-        $testing_mark = $request['1'] + $request['2'] + $request['3'] + $request['4'] + $request['5'];
+        $testing_mark = $request['1'] + $request['2'] + $request['3'] + $request['4'];
+        if ($request['6'] == $request['8']){
+            $testing_mark = $testing_mark + $request['7'];
+        }
         $pass_date = new \DateTime('now');
         if (StudTest::where('users_id','=',$request->users_id)->where('theme_id','=',$request->theme_id)->exists()){
         StudTest::where('users_id','=',$request->users_id)->where('theme_id','=',$request->theme_id)->update(['testing_mark' => $testing_mark, 'testing_date' => $pass_date]);
@@ -92,8 +95,10 @@ class StudTestController extends Controller
     public function passGuest(Request $request)
     {
 
-        $testing_mark = $request['1'] + $request['2'] + $request['3'] + $request['4'] + $request['5'];
-
+        $testing_mark = $request['1'] + $request['2'] + $request['3'] + $request['4'];
+        if ($request['6'] == $request['8']){
+            $testing_mark = $testing_mark + $request['7'];
+        }
         return view('mark')->with(['mark' => $testing_mark]);
     }
 
