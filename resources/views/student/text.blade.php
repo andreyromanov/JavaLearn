@@ -1,4 +1,5 @@
-@extends('layouts.app')
+<head><title>JavaLearn</title></head>
+<body>@extends('layouts.app')
 @section('content')
 <div class="container">
   <div class="row">
@@ -26,5 +27,4 @@
  </div>
 </div>
 @endsection
-
-
+</body>

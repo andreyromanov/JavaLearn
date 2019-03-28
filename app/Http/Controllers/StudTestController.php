@@ -38,7 +38,7 @@ class StudTestController extends Controller
 
         $test =  DB::table('Topic')->JOIN('Questions', 'Topic.theme_id', '=', 'Questions.theme_id')->JOIN('Answers', 'Questions.questions_id', '=', 'Answers.questions_id')->where('topic.theme_id', $studTheme)->distinct()->get();
 
-        return view('student/test', ['answerr' => $answer, 'test'=>$test,'question_id' => $question_id, 'question_ids' => $question_ids, 'quiz' => $quiz, 'answer1' => $answer1,'studTheme'=>$studTheme]);
+        return view('student/test', ['answerr' => $answer, 'test' => $test, 'question_id' => $question_id, 'question_ids' => $question_ids, 'quiz' => $quiz, 'answer1' => $answer1, 'studTheme' => $studTheme]);
     }
 
     public function indexGuest($studTheme)
@@ -55,7 +55,7 @@ class StudTestController extends Controller
 
         $test =  DB::table('Topic')->JOIN('Questions', 'Topic.theme_id', '=', 'Questions.theme_id')->JOIN('Answers', 'Questions.questions_id', '=', 'Answers.questions_id')->where('topic.theme_id', $studTheme)->distinct()->get();
 
-        return view('/test', ['answerr' => $answer, 'test'=>$test,'question_id' => $question_id, 'question_ids' => $question_ids, 'quiz' => $quiz, 'answer1' => $answer1,'studTheme'=>$studTheme]);
+        return view('/test', ['answerr' => $answer, 'test' => $test, 'question_id' => $question_id, 'question_ids' => $question_ids, 'quiz' => $quiz, 'answer1' => $answer1, 'studTheme' => $studTheme]);
     }
 
     /**
@@ -77,25 +77,24 @@ class StudTestController extends Controller
     public function pass(Request $request)
     {
 
-        $testing_mark = $request['1'] + $request['2'] +$request['3'] +$request['4'] +$request['5'];
-        $pass_date =new \DateTime('now');
-        StudTest::updateOrCreate([
-            'users_id' => $request->users_id,
-            'testing_mark' => $testing_mark,
-            
-            'testing_date' => $pass_date,
-            'theme_id' => $request->theme_id,
-        ]);
-
+        $testing_mark = $request['1'] + $request['2'] + $request['3'] + $request['4'] + $request['5'];
+        $pass_date = new \DateTime('now');
+        if (StudTest::where('users_id','=',$request->users_id)->where('theme_id','=',$request->theme_id)->exists()){
+        StudTest::where('users_id','=',$request->users_id)->where('theme_id','=',$request->theme_id)->update(['testing_mark' => $testing_mark, 'testing_date' => $pass_date]);
+        }else{
+        StudTest::create(
+                ['users_id' => $request->users_id, 'theme_id' => $request->theme_id,
+                'testing_mark' => $testing_mark, 'testing_date' => $pass_date]
+            );}
         return redirect()->route('home');
     }
 
     public function passGuest(Request $request)
     {
 
-        $testing_mark = $request['1'] + $request['2'] +$request['3'] +$request['4'] +$request['5'];
-              
-        return view('mark')->with(['mark'=>$testing_mark]);
+        $testing_mark = $request['1'] + $request['2'] + $request['3'] + $request['4'] + $request['5'];
+
+        return view('mark')->with(['mark' => $testing_mark]);
     }
 
 

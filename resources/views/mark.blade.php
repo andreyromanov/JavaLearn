@@ -1,3 +1,5 @@
+<head><title>JavaLearn</title></head>
+<body>
 @extends('layouts.app')
 
 @section('content')
@@ -25,4 +27,6 @@
         </div>
     </div>
 </div>
+
 @endsection
+</body>

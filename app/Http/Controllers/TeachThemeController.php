@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\TeachTheme;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Auth;
 
 class TeachThemeController extends Controller
 {
@@ -17,10 +18,10 @@ class TeachThemeController extends Controller
     {
 
        // $que = DB::table('questions')->select('questions_id')->where('theme_id', '=', 13)->get();
+       $user = Auth::user();
+        $themes = TeachTheme::all()->where('users_id','=',$user->id);
 
-        $themes = TeachTheme::all();
-
-        return view('teacher/themes',['themes' => $themes]);
+        return view('teacher/themes',['themes' => $themes,'user'=>$user]);
     }
 
     /**

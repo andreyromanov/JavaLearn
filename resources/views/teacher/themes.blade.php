@@ -1,4 +1,5 @@
-@extends('layouts.app')
+<head><title>JavaLearn</title></head>
+<body>@extends('layouts.app')
 @section('content')
 <div class="container">
 	<div class="row">
@@ -21,6 +22,7 @@
 
 						</thead>
 						<tbody>
+						
 							@foreach ($themes as $theme)
 							<tr>
 								<td> {{ $theme->theme_name }} 
@@ -44,5 +46,4 @@
 	</div>
 </div>
 @endsection
-
-
+</body>
