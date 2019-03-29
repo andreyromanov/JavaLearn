@@ -1,5 +1,6 @@
 <head>
     <title>JavaLearn</title>
+
 </head>
 
 <body>@extends('layouts.app')
@@ -25,6 +26,7 @@
                             </div>
                             <input type="text" name="users_id" value="{{Auth::user()->id}}" style="display: none;">
                             <h1 class="text-center">Вопросы по теме</h1>
+                            
                             <!--ВОПРОС 1-->
                             <div class="form-group">
                                 <? $i = 1 ?>
@@ -59,6 +61,8 @@
                                     @endforeach
                                     <br>
                                     <button type="submit" class="btn btn-primary text-center" style="margin-top: 20px;">Сохранить</button>
+                                    </div>
+                                    </div>
                         </form>
                     </div>
                 </div>
@@ -66,4 +70,5 @@
         </div>
     </div>
     @endsection
+
 </body> 
