@@ -28,34 +28,20 @@ class StudTestController extends Controller
     {
 
         $quiz = DB::table('Topic')->select('theme_name', 'theme_id')->where('theme_id', '=', $studTheme)->get();
-
         $question_ids = DB::table('Questions')->select('questions_text', 'questions_id', 'question_type')->where('theme_id', '=', $studTheme)->get();
-        $question_id = DB::table('Questions')->select('questions_id')->where('theme_id', '=', $studTheme)->get();
-
-
-        $answer = DB::table('Answers')->select('answers_id', 'answers_text', 'questions_id')->where('questions_id', '=', 1)->get();
-        $answer1 = DB::table('Answers')->select('answers_id', 'answers_text', 'questions_id')->where('answers_id', '=', 1)->get();
-
         $test =  DB::table('Topic')->JOIN('Questions', 'Topic.theme_id', '=', 'Questions.theme_id')->JOIN('Answers', 'Questions.questions_id', '=', 'Answers.questions_id')->where('topic.theme_id', $studTheme)->distinct()->get();
 
-        return view('student/test', ['answerr' => $answer, 'test' => $test, 'question_id' => $question_id, 'question_ids' => $question_ids, 'quiz' => $quiz, 'answer1' => $answer1, 'studTheme' => $studTheme]);
+        return view('student/test', ['test' => $test, 'question_ids' => $question_ids, 'quiz' => $quiz, 'studTheme' => $studTheme]);
     }
 
     public function indexGuest($studTheme)
     {
 
         $quiz = DB::table('Topic')->select('theme_name', 'theme_id')->where('theme_id', '=', $studTheme)->get();
-
         $question_ids = DB::table('Questions')->select('questions_text', 'questions_id', 'question_type')->where('theme_id', '=', $studTheme)->get();
-        $question_id = DB::table('Questions')->select('questions_id')->where('theme_id', '=', $studTheme)->get();
-
-
-        $answer = DB::table('Answers')->select('answers_id', 'answers_text', 'questions_id')->where('questions_id', '=', 1)->get();
-        $answer1 = DB::table('Answers')->select('answers_id', 'answers_text', 'questions_id')->where('answers_id', '=', 1)->get();
-
         $test =  DB::table('Topic')->JOIN('Questions', 'Topic.theme_id', '=', 'Questions.theme_id')->JOIN('Answers', 'Questions.questions_id', '=', 'Answers.questions_id')->where('topic.theme_id', $studTheme)->distinct()->get();
 
-        return view('/test', ['answerr' => $answer, 'test' => $test, 'question_id' => $question_id, 'question_ids' => $question_ids, 'quiz' => $quiz, 'answer1' => $answer1, 'studTheme' => $studTheme]);
+        return view('/test', ['test' => $test, 'question_ids' => $question_ids, 'quiz' => $quiz, 'studTheme' => $studTheme]);
     }
 
     /**

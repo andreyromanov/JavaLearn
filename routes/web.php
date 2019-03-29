@@ -45,4 +45,6 @@ Route::get('/teacher/themes/newtheme',function(){
 });
 Route::post('/teacher/themes/newtheme/create','TeachThemeController@store');
 Route::get('/teacher/themes/delete/{id}','TeachThemeController@destroy');
+Route::get('/teacher/themes/edit/{teachTheme}','TeachThemeController@edit');
+Route::post('/teacher/themes/update/{teachTheme}','TeachThemeController@update');
 

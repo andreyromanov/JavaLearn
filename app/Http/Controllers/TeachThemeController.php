@@ -17,11 +17,11 @@ class TeachThemeController extends Controller
     public function index()
     {
 
-       // $que = DB::table('questions')->select('questions_id')->where('theme_id', '=', 13)->get();
-       $user = Auth::user();
-        $themes = TeachTheme::all()->where('users_id','=',$user->id);
+        // $que = DB::table('questions')->select('questions_id')->where('theme_id', '=', 13)->get();
+        $user = Auth::user();
+        $themes = TeachTheme::all()->where('users_id', '=', $user->id);
 
-        return view('teacher/themes',['themes' => $themes,'user'=>$user]);
+        return view('teacher/themes', ['themes' => $themes, 'user' => $user]);
     }
 
     /**
@@ -48,35 +48,35 @@ class TeachThemeController extends Controller
             'users_id' => $request->users_id
         ]);
 
-       //берем id текущей темы
+        //берем id текущей темы
         $themeid =  DB::table('Topic')->where('theme_name', $request->theme_name)->value('theme_id');
 
         for ($i = 1; $i <= 4; $i++) {
-    //создаем вопрос
+            //создаем вопрос
             DB::table('questions')->insert(
-                ['questions_text' => $request->{'q'.$i}, 'theme_id' => $themeid, 'question_type' => 'test']
+                ['questions_text' => $request->{'q' . $i}, 'theme_id' => $themeid, 'question_type' => 'test']
             );
-        //берем id вопроса для ответов
-            $questionid =  DB::table('questions')->where('questions_text',$request->{'q'.$i})->value('questions_id');
-        //массив с вариантами к ответу
+            //берем id вопроса для ответов
+            $questionid =  DB::table('questions')->where('questions_text', $request->{'q' . $i})->value('questions_id');
+            //массив с вариантами к ответу
             $data = array(
-             array('questions_id' => $questionid, 'answers_text' => $request->{'a1'.$i}, 'answer_correctness' => $request->{'ca1'.$i}),
-             array('questions_id' => $questionid, 'answers_text' => $request->{'a2'.$i}, 'answer_correctness' => $request->{'ca2'.$i}),
-             array('questions_id' => $questionid, 'answers_text' => $request->{'a3'.$i}, 'answer_correctness' => $request->{'ca3'.$i}),
-             array('questions_id' => $questionid, 'answers_text' => $request->{'a4'.$i}, 'answer_correctness' => $request->{'ca4'.$i})
-         );
-        //вставляем массив с вариантами к вопросу
+                array('questions_id' => $questionid, 'answers_text' => $request->{'a1' . $i}, 'answer_correctness' => $request->{'ca1' . $i}),
+                array('questions_id' => $questionid, 'answers_text' => $request->{'a2' . $i}, 'answer_correctness' => $request->{'ca2' . $i}),
+                array('questions_id' => $questionid, 'answers_text' => $request->{'a3' . $i}, 'answer_correctness' => $request->{'ca3' . $i}),
+                array('questions_id' => $questionid, 'answers_text' => $request->{'a4' . $i}, 'answer_correctness' => $request->{'ca4' . $i})
+            );
+            //вставляем массив с вариантами к вопросу
             DB::table('answers')->insert($data);
-        } 
+        }
         //fill
         DB::table('questions')->insert(
             ['questions_text' => $request->{'q5'}, 'theme_id' => $themeid, 'question_type' => 'fill']
         );
         //берем id вопроса для ответов
-        $questionid =  DB::table('questions')->where('questions_text',$request->{'q5'})->value('questions_id');
-        
+        $questionid =  DB::table('questions')->where('questions_text', $request->{'q5'})->value('questions_id');
+
         DB::table('answers')->insert(
-            ['questions_id' => $questionid, 'answers_text' => $request->{'a15'}, 'answer_correctness' => 2 ]
+            ['questions_id' => $questionid, 'answers_text' => $request->{'a15'}, 'answer_correctness' => 2]
         );
         return redirect()->action('TeachThemeController@index');
     }
@@ -90,9 +90,9 @@ class TeachThemeController extends Controller
     public function show(TeachTheme $teachTheme)
     {
         //
-     $themeText = TeachTheme::find($teachTheme);
-    // return view('student/text',['themeText'=>$themeText]);
- }
+        $themeText = TeachTheme::find($teachTheme);
+        // return view('student/text',['themeText'=>$themeText]);
+    }
 
     /**
      * Show the form for editing the specified resource.
@@ -102,7 +102,10 @@ class TeachThemeController extends Controller
      */
     public function edit(TeachTheme $teachTheme)
     {
-        //
+        $topic = DB::table('Topic')->where('theme_id', '=', $teachTheme->theme_id)->get();
+        $questions = DB::table('questions')->where('theme_id', '=', $teachTheme->theme_id)->get();
+        $answers =  DB::table('Topic')->JOIN('Questions', 'Topic.theme_id', '=', 'Questions.theme_id')->JOIN('Answers', 'Questions.questions_id', '=', 'Answers.questions_id')->where('topic.theme_id', $teachTheme->theme_id)->get();
+        return view('teacher/themeedit', ['teachTheme' => $teachTheme, 'topic' => $topic, 'questions' => $questions, 'answers' => $answers]);
     }
 
     /**
@@ -114,7 +117,45 @@ class TeachThemeController extends Controller
      */
     public function update(Request $request, TeachTheme $teachTheme)
     {
-        //
+        TeachTheme::where('theme_id', '=', $teachTheme->theme_id)->update([
+            'theme_name' => $request->theme_name,
+            'theme_text' => $request->theme_text,
+            'users_id' => $request->users_id
+        ]);
+
+        //берем id текущей темы
+        for ($i = 1; $i <= 4; $i++) {
+            //создаем вопрос
+            DB::table('questions')->where('questions_id', '=', $request->{'question_id' . $i})->update(
+                ['questions_text' => $request->{'q' . $i}, 'question_type' => 'test']
+            );
+            //берем id вопроса для ответов
+            $questionid =  $request->{'question_id' . $i};
+            //массив с вариантами к ответу
+            $data = array(
+                array('answers_text' => $request->{'a1' . $i}, 'answer_correctness' => $request->{'ca1' . $i}),
+                array('answers_text' => $request->{'a2' . $i}, 'answer_correctness' => $request->{'ca2' . $i}),
+                array('answers_text' => $request->{'a3' . $i}, 'answer_correctness' => $request->{'ca3' . $i}),
+                array('answers_text' => $request->{'a4' . $i}, 'answer_correctness' => $request->{'ca4' . $i})
+            );
+            //вставляем массив с вариантами к вопросу
+            DB::table('answers')->where('answers_id', '=', $request->{'answer_id1' . $i})->update(['answers_text' => $request->{'a1' . $i}, 'answer_correctness' => $request->{'ca1' . $i}]);
+            DB::table('answers')->where('answers_id', '=', $request->{'answer_id2' . $i})->update(['answers_text' => $request->{'a2' . $i}, 'answer_correctness' => $request->{'ca2' . $i}]);
+            DB::table('answers')->where('answers_id', '=', $request->{'answer_id3' . $i})->update(['answers_text' => $request->{'a3' . $i}, 'answer_correctness' => $request->{'ca3' . $i}]);
+            DB::table('answers')->where('answers_id', '=', $request->{'answer_id4' . $i})->update(['answers_text' => $request->{'a4' . $i}, 'answer_correctness' => $request->{'ca4' . $i}]);
+
+        }
+        //fill
+        DB::table('questions')->where('questions_id', '=', $request->{'question_id5'})->update(
+            ['questions_text' => $request->{'q5'}, 'theme_id' => $teachTheme->theme_id, 'question_type' => 'fill']
+        );
+        //берем id вопроса для ответов
+        $questionid =  $request->{'question_id5'};
+
+        DB::table('answers')->where('answers_id', '=', $request->{'answer_id5'})->update(
+            ['questions_id' => $questionid, 'answers_text' => $request->{'a15'}, 'answer_correctness' => 2]
+        );
+        return redirect()->action('TeachThemeController@index');
     }
 
     /**
@@ -125,7 +166,7 @@ class TeachThemeController extends Controller
      */
     public function destroy($id)
     {
-        
+
 
         DB::table('Topic')->where('theme_id', $id)->delete();
 

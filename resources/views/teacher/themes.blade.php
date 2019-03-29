@@ -30,7 +30,7 @@
 								<td>
 									<div class="text-center">
 										<a href="themes/delete/{{ $theme->theme_id }}" style=""><button type="button" class="btn btn-danger  text-center" >Удалить</button></a>
-										<button type="button" class="btn btn-primary text-center" >Изменить</button>
+										<a href="themes/edit/{{ $theme->theme_id }}"><button type="button" class="btn btn-primary text-center" >Изменить</button></a>
 									</div>
 								</td>
 							</tr>
