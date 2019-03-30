@@ -19,13 +19,7 @@
         @if ( Auth::user()->role=="teacher")
         <div class="panel-heading text-center" ><h4> Оценки учеников</h4></div>
         
-          <form>
-            <div class="form-group">
-
-              <input type="text" class="form-control" id="namestudent" aria-describedby="studHelp" placeholder="Введите ФИО студента">
-            </div>
-            <button type="submit" class="btn btn-primary">Поиск</button>
-          </form>
+          
           <table class="table table-bordered">
             <tbody>
             <th>Название темы</th>
