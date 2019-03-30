@@ -135,7 +135,7 @@
                 Один из наиболее популярных языков программирования. Проиди обучение и стань настоящим специалистом!
             </div>
             <div class="col-md-5 pt-5 text-center">
-                <a href="#" class="gradient-button w-button mr-3 text-white mb-5">Теория</a>
+                <a href="/student/themes" class="gradient-button w-button mr-3 text-white mb-5">Теория</a>
 
             </div>
         </div>

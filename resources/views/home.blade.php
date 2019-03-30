@@ -17,7 +17,7 @@
         
 
         @if ( Auth::user()->role=="teacher")
-        <div class="panel-heading text-center" > Оценки учеников</div>
+        <div class="panel-heading text-center" ><h4> Оценки учеников</h4></div>
         
           <form>
             <div class="form-group">
