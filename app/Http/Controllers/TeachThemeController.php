@@ -68,16 +68,32 @@ class TeachThemeController extends Controller
             //вставляем массив с вариантами к вопросу
             DB::table('answers')->insert($data);
         }
-        //fill
+        //fill вставляем вопрос
         DB::table('questions')->insert(
             ['questions_text' => $request->{'q5'}, 'theme_id' => $themeid, 'question_type' => 'fill']
         );
-        //берем id вопроса для ответов
+        //берем id вопроса для ответов для fill
         $questionid =  DB::table('questions')->where('questions_text', $request->{'q5'})->value('questions_id');
-
+        //insert fill answers
         DB::table('answers')->insert(
             ['questions_id' => $questionid, 'answers_text' => $request->{'a15'}, 'answer_correctness' => 2]
         );
+
+        //accordance вставляем вопрос
+        DB::table('questions')->insert(
+            ['questions_text' => $request->{'q6'}, 'theme_id' => $themeid, 'question_type' => 'accordance']
+        );
+        //берем id вопроса для ответов для accordance
+        $questionid =  DB::table('questions')->where('questions_text', $request->{'q6'})->value('questions_id');
+        
+        $acc = array(
+            array('questions_id' => $questionid, 'LP' => $request->{'LP1'}, 'RP' => $request->{'RP1'}, 'LA' => $request->{'LA1'}, 'RA' => $request->{'RA1'}),
+            array('questions_id' => $questionid, 'LP' => $request->{'LP2'}, 'RP' => $request->{'RP2'}, 'LA' => $request->{'LA2'}, 'RA' => $request->{'RA2'}),
+            array('questions_id' => $questionid, 'LP' => $request->{'LP3'}, 'RP' => $request->{'RP3'}, 'LA' => $request->{'LA3'}, 'RA' => $request->{'RA3'}),
+        );
+        //вставляем массив с вариантами к вопросу
+        DB::table('accordance')->insert($acc);
+        
         return redirect()->action('TeachThemeController@index');
     }
 

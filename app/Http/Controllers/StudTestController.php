@@ -64,8 +64,8 @@ class StudTestController extends Controller
     {
 
         $testing_mark = $request['1'] + $request['2'] + $request['3'] + $request['4'];
-        if ($request['6'] == $request['8']){
-            $testing_mark = $testing_mark + $request['7'];
+        if ($request['7'] == $request['9']){
+            $testing_mark = $testing_mark + $request['8'];
         }
         $pass_date = new \DateTime('now');
         if (StudTest::where('users_id','=',$request->users_id)->where('theme_id','=',$request->theme_id)->exists()){
@@ -82,8 +82,8 @@ class StudTestController extends Controller
     {
 
         $testing_mark = $request['1'] + $request['2'] + $request['3'] + $request['4'];
-        if ($request['6'] == $request['8']){
-            $testing_mark = $testing_mark + $request['7'];
+        if ($request['7'] == $request['9']){
+            $testing_mark = $testing_mark + $request['8'];
         }
         return view('mark')->with(['mark' => $testing_mark]);
     }
