@@ -60,8 +60,10 @@
                                 @if($answer->questions_id == $key->questions_id and $answer->question_type == 'fill')
 
                                 <input type="text" name="{{$i}}" class="form-control" style="width: 200px;">
-                                <input type="input"  name="{{$i+1}}" value="{{$answer->answer_correctness}}" style="display: none;">
-                                <input type="input" name="{{$i+2}}" value="{{$answer->answers_text}}" style="display: none;">
+                                <input type="input" name="{{$i+1}}" value="{{$answer->answer_correctness}}"
+                                    style="display: none;">
+                                <input type="input" name="{{$i+2}}" value="{{$answer->answers_text}}"
+                                    style="display: none;">
                                 @else
                                 @endif
                                 @endforeach
@@ -69,23 +71,49 @@
 
                             </li>
                             @endforeach
-                        </ul>
 
-                        
+
+                            @foreach($question_ids as $key)
+
+                            @if($key->question_type == 'accordance')
+                            <li class="list-group-item">Вопрос: {{$key->questions_text}}<br><br>
+                                @else
+                                @endif
+                                <div class="row">
+                                    <?$i=10; $j=1; $a=array('А','Б','В');?>
+                                    @foreach($acc as $ac)
+
+
+                                    @if($ac->questions_id == $key->questions_id and $ac->question_type == 'accordance')
+                                    <div class="col-md-3 text-center"><label> {{$a[$j-1]}}. {{$ac->LP}}</label><br>
+                                    </div>
+
+                                    <div class="col-md-3"><label> {{$j}}. {{$ac->RP}}</label><br></div>
+                                    <div class="col-md-6" style="display: inline;"><label> {{$a[$j-1]}}. </label>
+                                        <input type="text" name="acc{{$i}}" class="form-control"
+                                            style="width: 50px;display: inline;"></label> <br></div>
+
+                             <input type="input" name="questionsid{{$i}}" value="{{$ac->accordance_id}}"
+                                    style="display: none;">
+                                
+                                    
+
+                                    @else
+                                    @endif
+                                    <? $j++; ?>
+                                    <? $i++?>
+                                    @endforeach
+                                </div>
+
+                            </li>
+                            @endforeach
+                        </ul>
+                        <br>
 
                         <button type="submit" name="submit" style="margin-left: 20%"
                             class="btn btn-primary btn-lg text-center ">Завершить</button>
                     </form>
 
-                    <div class="panel-body" style="padding-left: 30px;padding-right: 30px;">
-
-                        <p>
-
-
-                        </p>
-
-
-                    </div>
 
                 </div>
             </div>
