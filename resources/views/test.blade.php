@@ -19,7 +19,7 @@
                     <form class="" action="/theme/test/pass" method="post">
                         {{ csrf_field() }}
                         <ul class="list-group">
-                            <?$i=1?>
+                            <? $i = 1 ?>
                             @foreach($question_ids as $key)
 
                             @if($key->question_type == 'test')
@@ -33,14 +33,13 @@
 
                                 @if($answer->questions_id == $key->questions_id and $answer->question_type == 'test')
 
-                                <label><input type="checkbox" name="{{$i}}" value="{{$answer->answer_correctness}}"
-                                        class=""> {{$answer->answers_text}}</label>
+                                <label><input type="checkbox" name="{{$i}}" value="{{$answer->answer_correctness}}" class=""> {{$answer->answers_text}}</label>
 
                                 @else
                                 @endif
                                 @endforeach
 
-                                <? $i++?>
+                                <? $i++ ?>
                             </li>
                             @endforeach
 
@@ -60,10 +59,8 @@
                                 @if($answer->questions_id == $key->questions_id and $answer->question_type == 'fill')
 
                                 <input type="text" name="{{$i}}" class="form-control" style="width: 200px;">
-                                <input type="input" name="{{$i+1}}" value="{{$answer->answer_correctness}}"
-                                    style="display: none;">
-                                <input type="input" name="{{$i+2}}" value="{{$answer->answers_text}}"
-                                    style="display: none;">
+                                <input type="input" name="{{$i+1}}" value="{{$answer->answer_correctness}}" style="display: none;">
+                                <input type="input" name="{{$i+2}}" value="{{$answer->answers_text}}" style="display: none;">
                                 @else
                                 @endif
                                 @endforeach
@@ -80,7 +77,9 @@
                                 @else
                                 @endif
                                 <div class="row">
-                                    <?$i=10; $j=1; $a=array('А','Б','В');?>
+                                    <? $i = 10;
+                                    $j = 1;
+                                    $a = array('А', 'Б', 'В'); ?>
                                     @foreach($acc as $ac)
 
 
@@ -90,18 +89,14 @@
 
                                     <div class="col-md-3"><label> {{$j}}. {{$ac->RP}}</label><br></div>
                                     <div class="col-md-6" style="display: inline;"><label> {{$a[$j-1]}}. </label>
-                                        <input type="text" name="acc{{$i}}" class="form-control"
-                                            style="width: 50px;display: inline;"></label> <br></div>
+                                        <input type="text" name="acc{{$i}}" class="form-control" style="width: 50px;display: inline;"></label> <br></div>
 
-                             <input type="input" name="questionsid{{$i}}" value="{{$ac->accordance_id}}"
-                                    style="display: none;">
-                                
-                                    
+                                    <input type="input" name="questionsid{{$i}}" value="{{$ac->accordance_id}}" style="display: none;">
 
                                     @else
                                     @endif
                                     <? $j++; ?>
-                                    <? $i++?>
+                                    <? $i++ ?>
                                     @endforeach
                                 </div>
 
@@ -110,8 +105,7 @@
                         </ul>
                         <br>
 
-                        <button type="submit" name="submit" style="margin-left: 20%"
-                            class="btn btn-primary btn-lg text-center ">Завершить</button>
+                        <button type="submit" name="submit" style="margin-left: 20%" class="btn btn-primary btn-lg text-center ">Завершить</button>
                     </form>
 
 
@@ -120,4 +114,4 @@
         </div>
     </div>
     @endsection
-</body>
+</body> 

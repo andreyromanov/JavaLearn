@@ -86,7 +86,7 @@ class StudTestController extends Controller
         if ($accord2 == $acc2) {
             $testing_mark++;
         }
-        if ($accord2 == $acc2) {
+        if ($accord3 == $acc3) {
             $testing_mark++;
         }
         $pass_date = new \DateTime('now');
