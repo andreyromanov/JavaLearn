@@ -68,7 +68,40 @@
 
 
                             </li>
+                            @if($key->question_type == 'accordance')
+                            <li class="list-group-item">Вопрос: {{$key->questions_text}}<br><br>
+                                @else
+                                @endif
+                                <div class="row">
+                                    <?$i=10; $j=1; $a=array('А','Б','В');?>
+                                    @foreach($acc as $ac)
+
+
+                                    @if($ac->questions_id == $key->questions_id and $ac->question_type == 'accordance')
+                                    <div class="col-md-3 text-center"><label> {{$a[$j-1]}}. {{$ac->LP}}</label><br>
+                                    </div>
+
+                                    <div class="col-md-3"><label> {{$j}}. {{$ac->RP}}</label><br></div>
+                                    <div class="col-md-6" style="display: inline;"><label> {{$a[$j-1]}}. </label>
+                                        <input type="text" name="acc{{$i}}" class="form-control"
+                                            style="width: 50px;display: inline;"></label> <br></div>
+
+                             <input type="input" name="questionsid{{$i}}" value="{{$ac->accordance_id}}"
+                                    style="display: none;">
+                                
+                                    
+
+                                    @else
+                                    @endif
+                                    <? $j++; ?>
+                                    <? $i++?>
+                                    @endforeach
+                                </div>
+
+                            </li>
+                           
                             @endforeach
+                            
                         </ul>
 
                         <input type="text" name="users_id" value="{{Auth::user()->id}}" style="display: none;">
