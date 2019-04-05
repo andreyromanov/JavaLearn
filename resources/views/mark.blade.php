@@ -1,7 +1,4 @@
-<head><title>JavaLearn</title></head>
-<body>
 @extends('layouts.app')
-
 @section('content')
 <div class="container">
     <div class="row">
@@ -16,17 +13,16 @@
                 </div>
                 <hr>
                 <span style="font-size: 20px;">Зарегистрируйтесь и Вас смогут пригласить на день открытых дверей!</span>
-               
-                    <a href="/register">
-                    <button type="btn btn-primary" class="btn btn-primary" style="margin-bottom: 35px; margin-top:25px;">
+
+                <a href="/register">
+                    <button type="btn btn-primary" class="btn btn-primary"
+                        style="margin-bottom: 35px; margin-top:25px;">
                         Зарегистрироваться
                     </button>
-                    </a>
-                
+                </a>
+
             </div>
         </div>
     </div>
 </div>
-
 @endsection
-</body>

@@ -1,5 +1,4 @@
-<head><title>JavaLearn</title></head>
-<body>@extends('layouts.app')
+@extends('layouts.app')
 
 @section('content')
 <div class="container">
@@ -8,58 +7,63 @@
       <div class="panel panel-default">
 
 
-        
-          @if (session('status'))
-          <div class="alert alert-success">
-            {{ session('status') }}
-          </div>
-          @endif
-        
+
+        @if (session('status'))
+        <div class="alert alert-success">
+          {{ session('status') }}
+        </div>
+        @endif
+
 
         @if ( Auth::user()->role=="teacher")
-        <div class="panel-heading text-center" ><h4> Оценки учеников</h4></div>
-        
-          
-          <table class="table table-bordered">
-            <tbody>
+        <div class="panel-heading text-center">
+          <h4> Оценки учеников</h4>
+        </div>
+
+        <div class="panel panel-default">
+        <table class="table table-bordered">
+          <tbody>
             <th>Название темы</th>
             <th>ФИ ученика</th>
             <th>Оценка</th>
             <th>Дата прохождения</th>
             @foreach ($teachtest as $teachtest)
-              <tr>
-                <td><a href="theme/{{$teachtest->theme_id}}">{{$teachtest->theme_name}}</a></td>
-                <td>{{$teachtest->surname}} {{$teachtest->name}}</td>
-                <td>{{$teachtest->testing_mark}}</td>
-                <td>{{$teachtest->testing_date}}</td>
-              </tr>
-              @endforeach
-            </tbody>
-          </table>
-      
+            <tr>
+              <td><a href="teacher/themes/edit/{{$teachtest->theme_id}}">{{$teachtest->theme_name}}</a></td>
+              <td>{{$teachtest->surname}} {{$teachtest->name}}</td>
+              <td>{{$teachtest->testing_mark}}</td>
+              <td>{{$teachtest->testing_date}}</td>
+            </tr>
+            @endforeach
+          </tbody>
+        </table>
+        </div>
 
         @elseif( Auth::user()->role=="student")
-        
-        <div class="panel-heading text-center"><h4>Пройденные тесты</h4></div>
-          <table class="table table-bordered">
-            <tbody>
+
+        <div class="panel-heading text-center">
+          <h4>Пройденные тесты</h4>
+        </div>
+        <div class="panel panel-default">
+        <table class="table table-bordered">
+          <tbody>
             <th>Название темы</th>
             <th>Оценка</th>
             <th>Дата прохождения теста</th>
             @foreach ($test as $test)
-            
-              <tr>
-                <td><a href="student/theme/{{$test->theme_id}}">{{$test->theme_name}}</a></td>
-                <td>{{$test->testing_mark}}</td>
-                <td>{{$test->testing_date}}</td>
-              </tr>
-              @endforeach
-            </tbody>
-          </table>
+
+            <tr>
+              <td><a href="student/theme/{{$test->theme_id}}">{{$test->theme_name}}</a></td>
+              <td>{{$test->testing_mark}}</td>
+              <td>{{$test->testing_date}}</td>
+            </tr>
+            @endforeach
+          </tbody>
+        </table>
+        </div>
         @endif
       </div>
     </div>
   </div>
 </div>
 @endsection
-</body>

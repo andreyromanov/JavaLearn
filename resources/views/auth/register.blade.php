@@ -1,5 +1,4 @@
-<head><title>JavaLearn</title></head>
-<body>@extends('layouts.app')
+@extends('layouts.app')
 
 @section('content')
 <div class="container">
@@ -128,4 +127,3 @@
     </div>
 </div>
 @endsection
-</body>

@@ -23,19 +23,12 @@
     </style>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
         integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-
-
-
-
-    <!-- Styles -->
-
 </head>
 
 <body>
-
     <div class="content bg">
         <nav class="navbar navbar-expand-lg navbar-light bg-light bg-tr">
-            <a class="navbar-brand text-white" href="#">JavaLearn</a>
+            <a class="navbar-brand text-white" href="/">JavaLearn</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -60,13 +53,11 @@
 
                     @if(Auth::user()->role == "student")
 
-
-
                     <li class="nav-item mr-3">
                         <a class="nav-link text-white" href="/student/themes">Темы</a>
                     </li>
                     <li class="nav-item mr-3">
-                    <a class="nav-link text-white" href="/results">Результаты</a>
+                        <a class="nav-link text-white" href="/results">Результаты</a>
                     </li>
                     <li class="nav-item mr-3">
                         <a class="nav-link text-white" href="/home">Профиль</a>
@@ -77,7 +68,7 @@
                         <a class="nav-link text-white" href="/teacher/themes">Мои темы</a>
                     </li>
                     <li class="nav-item mr-3">
-                    <a class="nav-link text-white" href="/results">Результаты</a>
+                        <a class="nav-link text-white" href="/results">Результаты</a>
                     </li>
                     <li class="nav-item mr-3">
                         <a class="nav-link text-white" href="/home">Профиль</a>
@@ -90,10 +81,7 @@
         </nav>
         <div class="row m-0 pb-5">
             <div class="col-md-6 h-auto pt-5">
-
                 <label class="text-white mt-5 h1"><b>JavaLearn.</b> Научиться программировать легко!</label> <br>
-
-
             </div>
             <div class="col-md-6 text-center h-400p">
                 <img width="200px" src="img/java.png">
@@ -126,8 +114,6 @@
         </div>
     </div>
 
-
-
     <div class="content bg">
         <div class="row m-0 pt-3">
             <div class="col-md-7 text-white m-auto">
@@ -135,12 +121,14 @@
                 Один из наиболее популярных языков программирования. Проиди обучение и стань настоящим специалистом!
             </div>
             <div class="col-md-5 pt-5 text-center">
-                <a href="/student/themes" class="gradient-button w-button mr-3 text-white mb-5">Теория</a>
-
+            @if ( Auth::user()->role=="teacher")
+                <a href="/teacher/themes" class="gradient-button w-button mr-3 text-white mb-5">Теория</a>
+            @else
+            <a href="/student/themes" class="gradient-button w-button mr-3 text-white mb-5">Теория</a>
+            @endif
             </div>
         </div>
     </div>
-
 
     <footer class="page-footer pt-3 pb-3">
         <div class="content text-center">
@@ -168,9 +156,6 @@
 
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.2/modernizr.js"></script>
-
-
-
 
 </body>
 
