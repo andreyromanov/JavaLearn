@@ -121,7 +121,9 @@ class TeachThemeController extends Controller
         $topic = DB::table('Topic')->where('theme_id', '=', $teachTheme->theme_id)->get();
         $questions = DB::table('questions')->where('theme_id', '=', $teachTheme->theme_id)->get();
         $answers =  DB::table('Topic')->JOIN('Questions', 'Topic.theme_id', '=', 'Questions.theme_id')->JOIN('Answers', 'Questions.questions_id', '=', 'Answers.questions_id')->where('topic.theme_id', $teachTheme->theme_id)->get();
-        return view('teacher/themeedit', ['teachTheme' => $teachTheme, 'topic' => $topic, 'questions' => $questions, 'answers' => $answers]);
+        $acc =  DB::table('Topic')->JOIN('Questions', 'Topic.theme_id', '=', 'Questions.theme_id')->JOIN('accordance', 'Questions.questions_id', '=', 'accordance.questions_id')->where('topic.theme_id', $teachTheme->theme_id)->get();
+     
+        return view('teacher/themeedit', ['teachTheme' => $teachTheme,'acc'=>$acc, 'topic' => $topic, 'questions' => $questions, 'answers' => $answers]);
     }
 
     /**
@@ -171,6 +173,12 @@ class TeachThemeController extends Controller
         DB::table('answers')->where('answers_id', '=', $request->{'answer_id5'})->update(
             ['questions_id' => $questionid, 'answers_text' => $request->{'a15'}, 'answer_correctness' => 2]
         );
+$i=1;
+        //вставляем массив с вариантами к вопросу
+        DB::table('accordance')->where('accordance_id' ,'=', $request->{'accordance_id1'})-> update(['LP' => $request->{'LP1'}, 'RP' => $request->{'RP1'}, 'LA' => $request->{'LA1'}, 'RA' => $request->{'RA1'}]);
+        DB::table('accordance')->where('accordance_id' ,'=', $request->{'accordance_id2'})-> update(['LP' => $request->{'LP2'}, 'RP' => $request->{'RP2'}, 'LA' => $request->{'LA2'}, 'RA' => $request->{'RA2'}]);
+        DB::table('accordance')->where('accordance_id' ,'=', $request->{'accordance_id3'})-> update(['LP' => $request->{'LP3'}, 'RP' => $request->{'RP3'}, 'LA' => $request->{'LA3'}, 'RA' => $request->{'RA3'}]);
+      
         return redirect()->action('TeachThemeController@index');
     }
 
