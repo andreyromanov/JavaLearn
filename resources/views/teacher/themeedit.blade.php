@@ -77,23 +77,31 @@
                             </div>
 
                             @if ($key->question_type == 'accordance')
-                            <?$k=1?>
+                            <?$k=1;
+                            $j = 1;
+                            $a = array('А', 'Б', 'В'); ?>
                             @foreach($acc as $accs)
 
                             <div class="row">
-                                <div class="col-md-4">
+                                <div class="col-md-1 text-right" style="padding-top: 7px;">
+                                    {{$a[$j-1]}}.</div>
+                                <div class="col-md-3">
                                     <input type="text" name="LP{{$k}}" class="form-control" value="{{$accs->LP}}"
                                         required="">
                                     <br></div>
-                                <div class="col-md-4">
+                                <div class="col-md-1 text-right" style="padding-top: 7px;">
+                                    {{ $j }}.</div>
+                                <div class="col-md-3">
                                     <input type="text" name="RP{{$k}}" class="form-control" value="{{$accs->RP}}"
                                         required="">
                                     <br>
                                 </div>
-                                <div class="col-md-2">
+                                <div class="col-md-2" style="display: none;">
                                     <input type="text" name="LA{{$k}}" class="form-control" value="{{$accs->LA}}"
                                         required="">
                                     <br></div>
+                                <div class="col-md-1 text-right" style="padding-top: 7px;">
+                                    {{$a[$j-1]}}.</div>
                                 <div class="col-md-2">
                                     <input type="text" name="RA{{$k}}" class="form-control" value="{{$accs->RA}}"
                                         required="">
@@ -102,7 +110,7 @@
                                 <input type="text" name="accordance_id{{$k}}" value="{{$accs->accordance_id}}"
                                     style="display: none;">
                             </div>
-
+                            <? $j++; ?>
                             <?$k++?>
                             @endforeach
                             @else

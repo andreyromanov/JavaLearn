@@ -151,47 +151,44 @@
               <label for="nameThemeInput">Вопрос 6</label>
               <input type="text" name="q6" class="form-control" placeholder="Введите вопрос 6" required="">
               <br>
-              <div class="row">
-                <div class="col-md-4">
-                  <input type="text" name="LP1" class="form-control" placeholder="Введите левую часть 1" required="">
-                  <br>
-                  <input type="text" name="LP2" class="form-control" placeholder="Введите левую часть 2" required="">
-                  <br>
-                  <input type="text" name="LP3" class="form-control" placeholder="Введите левую часть 3" required="">
-                  <br></div>
-                <div class="col-md-4">
-                  <input type="text" name="RP1" class="form-control" placeholder="Введите правую часть 1" required="">
-                  <br>
-                  <input type="text" name="RP2" class="form-control" placeholder="Введите правую часть 2" required="">
-                  <br>
-                  <input type="text" name="RP3" class="form-control" placeholder="Введите правую часть 3" required="">
-                  <br></div>
-                <div class="col-md-2">
-                  <input type="text" name="LA1" class="form-control" placeholder="Левая часть 1" required="">
-                  <br>
-                  <input type="text" name="LA2" class="form-control" placeholder="Левая часть 2" required="">
-                  <br>
-                  <input type="text" name="LA3" class="form-control" placeholder="Левая часть 3" required="">
-                  <br></div>
-                <div class="col-md-2">
-                  <input type="text" name="RA1" class="form-control" placeholder="Правая часть 1" required="">
-                  <br>
-                  <input type="text" name="RA2" class="form-control" placeholder="Правая часть 2" required="">
-                  <br>
-                  <input type="text" name="RA3" class="form-control" placeholder="Правая часть 3" required="">
-                  <br></div>
-              </div>
+              <?$k=1;
+                            $j = 1;
+                            $a = array('А', 'Б', 'В'); ?>
 
+              @for($b = 0; $b < 3; $b++ ) <div class="row">
+                <div class="col-md-1 text-right" style="padding-top: 7px;">
+                  {{$a[$j-1]}}.</div>
+                <div class="col-md-3">
+                  <input type="text" name="LP{{$k}}" class="form-control" value="" required="">
+                  <br></div>
+                <div class="col-md-1 text-right" style="padding-top: 7px;">
+                  {{ $j }}.</div>
+                <div class="col-md-3">
+                  <input type="text" name="RP{{$k}}" class="form-control" value="" required="">
+                  <br>
+                </div>
+                <div class="col-md-2" style="display: none;">
+                  <input type="text" name="LA{{$k}}" class="form-control" value="{{$j}}" required="">
+                  <br></div>
+                <div class="col-md-1 text-right" style="padding-top: 7px;">
+                  {{$a[$j-1]}}.</div>
+                <div class="col-md-2">
+                  <input type="text" name="RA{{$k}}" class="form-control" value="" required="">
+                  <br>
+                </div>
+                <input type="text" name="accordance_id{{$k}}" value="" style="display: none;">
             </div>
-
-
-            <br>
-            <button type="submit" class="btn btn-primary text-center" style="margin-top: 10px;">Сохранить</button>
-          </form>
-
+            <? $j++; ?>
+            <?$k++?>
+            @endfor
         </div>
+        <br>
+        <button type="submit" class="btn btn-primary text-center" style="margin-top: 10px;">Сохранить</button>
+        </form>
+
       </div>
     </div>
   </div>
+</div>
 </div>
 @endsection
