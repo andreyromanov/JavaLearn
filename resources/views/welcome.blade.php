@@ -121,11 +121,16 @@
                 Один из наиболее популярных языков программирования. Проиди обучение и стань настоящим специалистом!
             </div>
             <div class="col-md-5 pt-5 text-center">
-            @if ( Auth::user()->role=="teacher")
+                @guest
+                <a href="/themes" class="gradient-button w-button mr-3 text-white mb-5">Теория</a>
+                @else
+                @if ( Auth::user()->role=="teacher")
                 <a href="/teacher/themes" class="gradient-button w-button mr-3 text-white mb-5">Теория</a>
-            @else
-            <a href="/student/themes" class="gradient-button w-button mr-3 text-white mb-5">Теория</a>
-            @endif
+                @else
+                <a href="/student/themes" class="gradient-button w-button mr-3 text-white mb-5">Теория</a>
+
+                @endif
+                @endguest
             </div>
         </div>
     </div>

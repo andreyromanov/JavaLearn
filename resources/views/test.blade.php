@@ -19,33 +19,39 @@
                         @foreach($question_ids as $key)
 
                         @if($key->question_type == 'test')
-                        <li class="list-group-item">Вопрос: {{$key->questions_text}}<br>
+                        <li class="list-group-item">
+                            <label style="font-size: 16px;">Вопрос: {{$key->questions_text}}</label><br><br>
                             @else
 
                             @endif
+                            <div class="row">
+                                @foreach($test as $answer)
 
-                            @foreach($test as $answer)
+                                @if($answer->questions_id == $key->questions_id and $answer->question_type == 'test')
 
+                                <div class="col-md-12">
+                                    <label>
+                                        <input type="radio" name="{{$i}}" value="{{$answer->answer_correctness}}"
+                                            class="">
+                                        {{$answer->answers_text}}
+                                    </label>
+                                </div>
 
-                            @if($answer->questions_id == $key->questions_id and $answer->question_type == 'test')
+                                @else
+                                @endif
 
-                            <label><input type="checkbox" name="{{$i}}" value="{{$answer->answer_correctness}}"
-                                    class=""> {{$answer->answers_text}}</label>
-
-                            @else
-                            @endif
-                            @endforeach
-
+                                @endforeach
+                            </div>
                             <? $i++ ?>
                         </li>
                         @endforeach
 
 
-
                         @foreach($question_ids as $key)
 
                         @if($key->question_type == 'fill')
-                        <li class="list-group-item">Вопрос: {{$key->questions_text}}<br>
+                        <li class="list-group-item"><label style="font-size: 16px;">Вопрос:
+                                {{$key->questions_text}}</label><br><br>
                             @else
 
                             @endif
@@ -71,7 +77,8 @@
                         @foreach($question_ids as $key)
 
                         @if($key->question_type == 'accordance')
-                        <li class="list-group-item">Вопрос: {{$key->questions_text}}<br><br>
+                        <li class="list-group-item"><label style="font-size: 16px;">Вопрос:
+                                {{$key->questions_text}}</label><br><br>
                             @else
                             @endif
                             <div class="row">
