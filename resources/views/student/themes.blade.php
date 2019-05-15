@@ -11,8 +11,8 @@
 					<table class="table table-bordered">
 						<thead class=thead-light>
 							<tr>
-								<th scope="col">Название темы </th>
-								<th scope="col">Информация</th>
+								<th scope="col">Назва теми </th>
+								<th scope="col">Інформація</th>
 							</tr>
 						</thead>
 						<tbody>

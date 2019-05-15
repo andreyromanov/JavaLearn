@@ -5,17 +5,17 @@
         <div class="col-md-10 col-md-offset-1">
             <div class="panel panel-default ">
                 <div class="panel-heading text-center">
-                    <h4>Результаты тестов!</h4>
+                    <h4>Результати тестів!</h4>
                 </div>
                 <div class="panel panel-default">
                     <table class="table table-bordered">
                         <tbody>
-                            <th>Название темы</th>
-                            <th>Имя</th>
-                            <th>Почта</th>
-                            <th>Возраст</th>
-                            <th>Степень</th>
-                            <th>Оценка</th>
+                            <th>Назва теми</th>
+                            <th>Ім'я</th>
+                            <th>Пошта</th>
+                            <th>Вік</th>
+                            <th>Ступінь</th>
+                            <th>Оцінка</th>
                             @foreach ($results as $res)
                             <tr>
                                 <td>{{$res->theme_name}}</td>

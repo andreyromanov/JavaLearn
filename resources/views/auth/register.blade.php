@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Регистрация</div>
+                <div class="panel-heading">Реєстрація</div>
 
                 <div class="panel-body">
                     <form class="form-horizontal" method="POST" action="{{ route('register') }}">
@@ -13,7 +13,7 @@
 
 
                         <div class="form-group{{ $errors->has('surname') ? ' has-error' : '' }}">
-                            <label for="surname" class="col-md-4 control-label">Фамилия</label>
+                            <label for="surname" class="col-md-4 control-label">Прізвище</label>
 
                             <div class="col-md-6">
                                 <input id="surname" type="text" class="form-control" name="surname"
@@ -28,7 +28,7 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                            <label for="name" class="col-md-4 control-label">Имя</label>
+                            <label for="name" class="col-md-4 control-label">Ім'я</label>
 
                             <div class="col-md-6">
                                 <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}"
@@ -63,26 +63,26 @@
                                 <select onclick="reg()" id="type" name="role" class="form-control" required="">
                                     <option>---</option>
                                     <option value="student">Студент</option>
-                                    <option value="teacher">Преподаватель</option>
+                                    <option value="teacher">Викладач</option>
                                 </select>
                             </div>
                         </div>
 
                         <div id="lvl" class="form-group" style="display: none;">
-                            <label  class="col-md-4 control-label">Уровень образования</label>
+                            <label  class="col-md-4 control-label">Рівень освіти</label>
                             <div class="col-md-6">
                                 <select name="level" class="form-control" >
                                     <option value="">---</option>
-                                    <option value="Ученик">Ученик</option>
-                                    <option value="Младший специалист">Младший специалист</option>
+                                    <option value="Ученик">Учень</option>
+                                    <option value="Младший специалист">Молодший спеціаліст</option>
                                     <option value="Бакалавр">Бакалавр</option>
-                                    <option value="Магистр">Магистр</option>
+                                    <option value="Магистр">Магістр</option>
                                 </select>
                             </div>
                         </div>
 
                         <div id="age" class="form-group{{ $errors->has('name') ? ' has-error' : '' }}" style="display: none;">
-                            <label for="age" class="col-md-4 control-label">Возраст</label>
+                            <label for="age" class="col-md-4 control-label">Вік</label>
 
                             <div class="col-md-6">
                                 <input id="name" type="number" class="form-control" name="age" value="{{ old('age') }}">
@@ -105,7 +105,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="password-confirm" class="col-md-4 control-label">Подтвердите пароль</label>
+                            <label for="password-confirm" class="col-md-4 control-label">Підтвердіть пароль</label>
 
                             <div class="col-md-6">
                                 <input id="password-confirm" type="password" class="form-control"
@@ -116,7 +116,7 @@
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">
-                                    Зарегистрироваться
+                                    Зареєструватися
                                 </button>
                             </div>
                         </div>

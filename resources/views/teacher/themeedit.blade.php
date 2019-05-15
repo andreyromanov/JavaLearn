@@ -8,7 +8,7 @@
                     <form action="/teacher/themes/update/{{$teachTheme->theme_id}}" method="POST">
                         {{ csrf_field() }}
                         <div class="form-group">
-                            <label for="nameThemeInput">Название темы</label>
+                            <label for="nameThemeInput">Назва теми</label>
                             <div class="form-group">
                             </div>
                             @foreach($topic as $topic)
@@ -16,18 +16,18 @@
                             @endforeach
                         </div>
                         <div class="form-group">
-                            <label for="textThemeInput">Содержание</label>
+                            <label for="textThemeInput">Зміст</label>
                             <textarea id="text" name="theme_text" class="form-control"
                                 value="Введите текст">{{$topic->theme_text}}</textarea>
                         </div>
                         <input type="text" name="users_id" value="{{Auth::user()->id}}" style="display: none;">
-                        <h1 class="text-center">Вопросы по теме</h1>
+                        <h1 class="text-center">Питання по темі</h1>
 
                         <!--ВОПРОС 1-->
                         <div class="form-group">
                             <? $i = 1 ?>
                             @foreach($questions as $key)
-                            <label for="nameThemeInput">Вопрос {{$i}}</label>
+                            <label for="nameThemeInput">Питання {{$i}}</label>
                             <input type="text" name="q{{$i}}" class="form-control" required=""
                                 value="{{$key->questions_text}}">
                             <input type="text" name="question_id{{$i}}" value="{{$key->questions_id}}"
@@ -61,7 +61,7 @@
                             <div class="row">
                                 @if ($answer->questions_id == $key->questions_id and $answer->question_type == 'fill')
                                 <div class="col-md-1 text-right">
-                                    <label>Ответ: </label>
+                                    <label>Відповідь: </label>
                                 </div>
                                 <div class="col-md-3">
 
@@ -119,7 +119,7 @@
                             @endforeach
                             <br>
                             <button type="submit" class="btn btn-primary text-center"
-                                style="margin-top: 20px;">Сохранить</button>
+                                style="margin-top: 20px;">Зберегти</button>
                         </div>
                 </div>
                 </form>

@@ -5,12 +5,12 @@
 		<div class="col-md-10 col-md-offset-1">
 			<div class="panel panel-default">
 				<div class="panel-heading text-center">
-					<h3> Список моих тем</h3>
+					<h3> Список моїх тем</h3>
 				</div>
 
 				<div class="col-md-12 text-right" style="padding:20px;">
 					<a href="themes/newtheme" style="">
-						<button type="button" class="btn btn-success btn-lg text-center btn-block"> Создать тему
+						<button type="button" class="btn btn-success btn-lg text-center btn-block"> Створити тему
 						</button></a>
 
 				</div>
@@ -18,8 +18,8 @@
 					<table class="table table-bordered">
 						<thead class=thead-light>
 							<tr>
-								<th scope="col">Название темы </th>
-								<th scope="col">Действия</th>
+								<th scope="col">Назва теми </th>
+								<th scope="col">Дія</th>
 							</tr>
 
 						</thead>
@@ -32,9 +32,9 @@
 								<td>
 									<div class="text-center">
 										<a href="themes/delete/{{ $theme->theme_id }}" style=""><button type="button"
-												class="btn btn-danger  text-center">Удалить</button></a>
+												class="btn btn-danger  text-center">Видалити</button></a>
 										<a href="themes/edit/{{ $theme->theme_id }}"><button type="button"
-												class="btn btn-primary text-center">Изменить</button></a>
+												class="btn btn-primary text-center">Редагувати</button></a>
 									</div>
 								</td>
 							</tr>

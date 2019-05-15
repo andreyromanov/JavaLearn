@@ -17,16 +17,16 @@
 
         @if ( Auth::user()->role=="teacher")
         <div class="panel-heading text-center">
-          <h4> Оценки учеников</h4>
+          <h4> Оцінки учнів</h4>
         </div>
 
         <div class="panel panel-default">
         <table class="table table-bordered">
           <tbody>
-            <th>Название темы</th>
-            <th>ФИ ученика</th>
-            <th>Оценка</th>
-            <th>Дата прохождения</th>
+            <th>Назва теми</th>
+            <th>ПІ учня</th>
+            <th>Оцінка</th>
+            <th>Дата проходження</th>
             @foreach ($teachtest as $teachtest)
             <tr>
               <td><a href="teacher/themes/edit/{{$teachtest->theme_id}}">{{$teachtest->theme_name}}</a></td>
@@ -42,14 +42,14 @@
         @elseif( Auth::user()->role=="student")
 
         <div class="panel-heading text-center">
-          <h4>Пройденные тесты</h4>
+          <h4>Пройдені тести</h4>
         </div>
         <div class="panel panel-default">
         <table class="table table-bordered">
           <tbody>
-            <th>Название темы</th>
-            <th>Оценка</th>
-            <th>Дата прохождения теста</th>
+            <th>Назва теми</th>
+            <th>Оцінка</th>
+            <th>Дата проходження теста</th>
             @foreach ($test as $test)
 
             <tr>

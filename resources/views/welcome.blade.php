@@ -38,40 +38,40 @@
                 <ul class="navbar-nav navbar-right">
                     @guest
                     <li class="nav-item mr-3">
-                        <a class="nav-link text-white" href="/themes">Темы</a>
+                        <a class="nav-link text-white" href="/themes">Теми</a>
                     </li>
                     <li class="nav-item mr-3">
-                        <a class="nav-link text-white" href="/results">Результаты</a>
+                        <a class="nav-link text-white" href="/results">Результати</a>
                     </li>
                     <li class="nav-item mr-3">
-                        <a class="nav-link text-white" href="{{ route('login') }}">Войти</a>
+                        <a class="nav-link text-white" href="{{ route('login') }}">Увійти</a>
                     </li>
                     <li class="nav-item mr-3">
-                        <a class="nav-link text-white" href="{{ route('register') }}">Зарегистрироваться</a>
+                        <a class="nav-link text-white" href="{{ route('register') }}">Зареєструватися</a>
                     </li>
                     @else
 
                     @if(Auth::user()->role == "student")
 
                     <li class="nav-item mr-3">
-                        <a class="nav-link text-white" href="/student/themes">Темы</a>
+                        <a class="nav-link text-white" href="/student/themes">Теми</a>
                     </li>
                     <li class="nav-item mr-3">
-                        <a class="nav-link text-white" href="/results">Результаты</a>
+                        <a class="nav-link text-white" href="/results">Результати</a>
                     </li>
                     <li class="nav-item mr-3">
-                        <a class="nav-link text-white" href="/home">Профиль</a>
+                        <a class="nav-link text-white" href="/home">Профіль</a>
                     </li>
                     @else
 
                     <li class="nav-item mr-3">
-                        <a class="nav-link text-white" href="/teacher/themes">Мои темы</a>
+                        <a class="nav-link text-white" href="/teacher/themes">Мої теми</a>
                     </li>
                     <li class="nav-item mr-3">
-                        <a class="nav-link text-white" href="/results">Результаты</a>
+                        <a class="nav-link text-white" href="/results">Результати</a>
                     </li>
                     <li class="nav-item mr-3">
-                        <a class="nav-link text-white" href="/home">Профиль</a>
+                        <a class="nav-link text-white" href="/home">Профіль</a>
                     </li>
 
                     @endif
@@ -81,7 +81,7 @@
         </nav>
         <div class="row m-0 pb-5">
             <div class="col-md-6 h-auto pt-5">
-                <label class="text-white mt-5 h1"><b>JavaLearn.</b> Научиться программировать легко!</label> <br>
+                <label class="text-white mt-5 h1"><b>JavaLearn.</b> Навчитися програмувати легко!</label> <br>
             </div>
             <div class="col-md-6 text-center h-400p">
                 <img width="200px" src="img/java.png">
@@ -90,25 +90,25 @@
     </div>
 
     <div class="content text-center sect-2 bg-grey">
-        <h1 id="features" class="">Как это работает</h1>
+        <h1 id="features" class="">Як це працює</h1>
         <div class="row m-0 pb-5 pt-5" data-aos="zoom-in">
             <div class="space"></div>
             <div class="col-md-3 text-center m-4 pt-3 div-box">
                 <i class="far fa-user fa-5x"></i> <br>
-                <label class="pt-3"><b>Интерфейс</b></label>
-                <label class="pt-2">Удобный пользовательский интерфейс как для ученика, так и для учителя.</label>
+                <label class="pt-3"><b>Інтерфейс</b></label>
+                <label class="pt-2">Зручний користувацький інтерфейс як для учня, так і для вчителя.</label>
 
             </div>
             <div class="col-md-3 text-center m-4 pt-3 div-box">
                 <i class="fas fa-book fa-5x"></i> <br>
-                <label class="pt-3"><b>Теория</b></label>
-                <label class="pt-2">Теоритический материал позволит досконально изучить язык программирования.</label>
+                <label class="pt-3"><b>Теорія</b></label>
+                <label class="pt-2">Теоретичний матеріал дозволить досконально вивчити мову програмування.</label>
 
             </div>
             <div class="col-md-3 text-center m-4 pt-3 div-box">
                 <i class="far fa-check-circle fa-5x"></i> <br>
-                <label class="pt-3"><b>Тесты</b></label>
-                <label class="pt-2">Грамотные тесты позволят проверить полученые теоритические знания из теории.</label>
+                <label class="pt-3"><b>Тести</b></label>
+                <label class="pt-2">Грамотні тести дозволять перевірити отримані теретичні знання.</label>
 
             </div>
         </div>
@@ -118,16 +118,16 @@
         <div class="row m-0 pt-3">
             <div class="col-md-7 text-white m-auto">
                 <h3><b>Java</b></h3>
-                Один из наиболее популярных языков программирования. Проиди обучение и стань настоящим специалистом!
+                Одна з найбільш популярних мов програмування. Пройди навчання і стань справжнім спеціалістом!
             </div>
             <div class="col-md-5 pt-5 text-center">
                 @guest
-                <a href="/themes" class="gradient-button w-button mr-3 text-white mb-5">Теория</a>
+                <a href="/themes" class="gradient-button w-button mr-3 text-white mb-5">Теорія</a>
                 @else
                 @if ( Auth::user()->role=="teacher")
-                <a href="/teacher/themes" class="gradient-button w-button mr-3 text-white mb-5">Теория</a>
+                <a href="/teacher/themes" class="gradient-button w-button mr-3 text-white mb-5">Теорія</a>
                 @else
-                <a href="/student/themes" class="gradient-button w-button mr-3 text-white mb-5">Теория</a>
+                <a href="/student/themes" class="gradient-button w-button mr-3 text-white mb-5">Теорія</a>
 
                 @endif
                 @endguest

@@ -20,7 +20,7 @@
 
                         @if($key->question_type == 'test')
                         <li class="list-group-item">
-                            <label style="font-size: 16px;">Вопрос: {{$key->questions_text}}</label><br><br>
+                            <label style="font-size: 16px;">Питання: {{$key->questions_text}}</label><br><br>
                             @else
 
                             @endif
@@ -50,7 +50,7 @@
                         @foreach($question_ids as $key)
 
                         @if($key->question_type == 'fill')
-                        <li class="list-group-item"><label style="font-size: 16px;">Вопрос:
+                        <li class="list-group-item"><label style="font-size: 16px;">Питання:
                                 {{$key->questions_text}}</label><br><br>
                             @else
 
@@ -77,7 +77,7 @@
                         @foreach($question_ids as $key)
 
                         @if($key->question_type == 'accordance')
-                        <li class="list-group-item"><label style="font-size: 16px;">Вопрос:
+                        <li class="list-group-item"><label style="font-size: 16px;">Питання:
                                 {{$key->questions_text}}</label><br><br>
                             @else
                             @endif
@@ -113,7 +113,7 @@
                     <br>
 
                     <button type="submit" name="submit" style="margin-left: 45%;margin-bottom: 20px;"
-                        class="btn btn-primary btn-lg text-center ">Завершить</button>
+                        class="btn btn-primary btn-lg text-center ">Завершити</button>
                 </form>
 
             </div>
