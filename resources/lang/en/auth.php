@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'failed' => 'These credentials do not match our records.',
+    'failed' => 'Пароль та пошта не співпадають.',
     'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
 
 ];

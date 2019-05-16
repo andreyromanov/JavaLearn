@@ -69,9 +69,9 @@
                         </div>
 
                         <div id="lvl" class="form-group" style="display: none;">
-                            <label  class="col-md-4 control-label">Рівень освіти</label>
+                            <label class="col-md-4 control-label">Рівень освіти</label>
                             <div class="col-md-6">
-                                <select name="level" class="form-control" >
+                                <select name="level" class="form-control">
                                     <option value="">---</option>
                                     <option value="Ученик">Учень</option>
                                     <option value="Младший специалист">Молодший спеціаліст</option>
@@ -81,11 +81,12 @@
                             </div>
                         </div>
 
-                        <div id="age" class="form-group{{ $errors->has('name') ? ' has-error' : '' }}" style="display: none;">
+                        <div id="age" class="form-group{{ $errors->has('name') ? ' has-error' : '' }}"
+                            style="display: none;">
                             <label for="age" class="col-md-4 control-label">Вік</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="number" class="form-control" name="age" value="{{ old('age') }}">
+                                <input id="age" type="number" class="form-control" name="age" value="{{ old('age') }}">
                             </div>
                         </div>
 
@@ -94,13 +95,30 @@
                             <label for="password" class="col-md-4 control-label">Пароль</label>
 
                             <div class="col-md-6">
-                                <input id="password" type="password" class="form-control" name="password" required>
+                                <input id="example-progress-bar" type="password" class="form-control" name="password"
+                                    required>
 
                                 @if ($errors->has('password'))
                                 <span class="help-block">
                                     <strong>{{ $errors->first('password') }}</strong>
                                 </span>
                                 @endif
+                            </div>
+
+                        </div>
+                        <div class="form-group" style="font-size: 12px;">
+                            <label for="password" class="col-md-4 control-label"></label>
+                            <div class="col-md-6">
+                                <p id="passwordHelpBlock" class="form-text text-muted">
+                                    Пароль ма бути не менше 6 символів, мати хоча б 1 велику та 1
+                                    маленьку літери латинського алфавіту, 1 цифру та 1 символ ( # ? ! @ $ % ^ & * - ).
+                                </p>
+                            </div>
+                        </div>
+                        <div class="form-group" style="margin-bottom: 0px;">
+                            <label class="control-label col-md-4">Надійність паролю</label>
+                            <div class="col-md-6" id="example-progress-bar-container">
+
                             </div>
                         </div>
 

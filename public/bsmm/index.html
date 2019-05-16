@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Bootstrap Strength Meter</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        
+        <link rel="stylesheet" type="text/css" href="docs/css/bootstrap-3.2.0.min.css">
+        <link rel="stylesheet" type="text/css" href="docs/css/bootstrap-example.css">
+        <link rel="stylesheet" type="text/css" href="docs/css/prettify.css">
+        
+        <script type="text/javascript" src="docs/js/jquery-2.1.1.min.js"></script>
+        <script type="text/javascript" src="docs/js/bootstrap-3.2.0.min.js"></script>
+        <script type="text/javascript" src="password-score/dist/js/password-score.js"></script>
+        <script type="text/javascript" src="password-score/dist/js/password-score-options.js"></script>
+        <script type="text/javascript" src="dist/js/bootstrap-strength-meter.js"></script>
+        
+        <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/javascript">
+            MathJax.Hub.Config({
+                tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+            });
+        </script>
+        
+        <script type="text/javascript" src="docs/js/prettify.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                window.prettyPrint() && prettyPrint();
+            });
+        </script>
+    </head>
+    <body data-spy="scroll" data-target="#affix">
+        <a href="https://github.com/davidstutz/bootstrap-strength-meter"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub"></a>
+        
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3" id="affix">
+                    <ul class="nav nav-pills nav-stacked sidebar" data-spy="affix" style="margin-top: 40px;">
+                        <li class="active"><a href="#getting-started">Getting Started</a></li>
+                        <li><a href="#drivers-options">Drivers &amp; Options</a></li>
+                        <li><a href="#license">License</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-9">
+                    <h1>Bootstrap Strength Meter</h1>
+                    
+                    <p>
+                        Bootstrap Strength Meter is intended to demonstrate the usage of <a href="" target="_blank">Password Score</a> - a JavaScript library used to give a realistic estimate of the strength of a password.
+                    </p>
+                    
+                    <p>Consider <a href="http://davidstutz.de/donate/">donating</a> to support development.</p>
+
+                    <p class="alert alert-info">
+                        <b>Note that documentation is not complete yet. Check <code>boostrap-strength-meter</code> for details!</b>
+                    </p>
+                    
+                    <div class="page-header">
+                        <h2><a id="getting-started"></a>Getting Started</h2>
+                    </div>
+
+                    <ol>
+                        <li>
+                            <h3>Include Required Files</h3>
+
+                            <p>
+                                First, all dependencies need to be included: <a href="" target="_blank">jQuery</a>, <a href="" target="_blank">Twitter Bootstrap</a> and <a href="" target="_blank">Password Score</a>.
+                            </p>
+
+<pre class="linenums prettyprint">
+&lt;!-- Twitter Bootstrap CSS: --&gt;
+&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;docs/css/bootstrap.css&quot;&gt;
+
+&lt;script type=&quot;text/javascript&quot; src=&quot;docs/js/jquery.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;docs/js/bootstrap.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;password-score/dist/js/password-score.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;password-score/dist/js/password-score-options.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;dist/js/bootstrap-strength-meter.js&quot;&gt;&lt;/script&gt;
+</pre>
+                        </li>
+                        <li>
+                            <h3>Setup Required HTML</h3>
+
+                            <p>
+                                Depending on the used configuration options, the required markup may vary - see <a href="#drivers-options">Drivers &amp; Options</a>. For this example we assume that the strength of the password should be displayed as text:
+                            </p>
+
+<pre class="linenums prettyprint">
+&lt;form class=&quot;form-horizontal&quot;&gt;
+    &lt;div class=&quot;form-group&quot;&gt;
+        &lt;label class=&quot;form-label col-sm-2&quot;&gt;Email&lt;/label&gt;
+        &lt;div class=&quot;col-sm-10&quot;&gt;
+            &lt;input type=&quot;text&quot; placeholder=&quot;Email ...&quot; class=&quot;form-control&quot; /&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;form-group&quot;&gt;
+        &lt;label class=&quot;form-label col-sm-2&quot;&gt;Password&lt;/label&gt;
+        &lt;div class=&quot;col-sm-4&quot;&gt;
+            &lt;input type=&quot;text&quot; placeholder=&quot;Password ...&quot; class=&quot;form-control&quot; id=&quot;example-getting-started-input&quot; /&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;col-sm-6&quot; id=&quot;example-getting-started-text&quot; style=&quot;font-weight:bold;padding:6px 12px;&quot;&gt;
+
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;form-group&quot;&gt;
+        &lt;div class=&quot;col-sm-offset-2 col-sm-10&quot;&gt;
+            &lt;button class=&quot;btn btn-primary&quot;&gt;Login&lt;/button&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/form&gt;
+</pre>
+                        </li>
+                        <li>
+                            <h3>Call Plugin</h3>
+
+                            <p>
+                                The plugin offers several so called drivers - options that allow to display the password strength differently. The following example shows how to use the <code>text</code> driver:
+                            </p>
+
+                            <div class="example">
+                                <script type="text/javascript">
+                                    $(document).ready(function() {
+                                        $('#example-getting-started-input').strengthMeter('text', {
+                                            container: $('#example-getting-started-text')
+                                        });
+                                    });
+                                </script>
+                                <form class="form-horizontal">
+                                    <div class="form-group">
+                                        <label class="form-label col-sm-2">Email</label>
+                                        <div class="col-sm-4">
+                                            <input type="text" placeholder="Email ..." class="form-control" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label col-sm-2">Password</label>
+                                        <div class="col-sm-4">
+                                            <input type="text" placeholder="Password ..." class="form-control" id="example-getting-started-input" />
+                                        </div>
+                                        <div class="col-sm-6" id="example-getting-started-text" style="font-weight:bold;padding:6px 12px;">
+
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-sm-offset-2 col-sm-10">
+                                            <button class="btn btn-primary">Login</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="highlight">
+<pre class="linenums prettyprint">
+&lt;script type=&quot;text/javascript&quot;&gt;
+    $(document).ready(function() {
+        $('#example-getting-started-input').strengthMeter('text', {
+            container: $('#example-getting-started-text')
+        });
+    });
+&lt;/script&gt;
+</pre>
+                            </div>
+                        </li>
+                    </ol>
+
+                    <div class="page-header">
+                        <h2><a id="drivers-options"></a>Drivers &amp; Options</h2>
+                    </div>
+                    
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <th colspan="2"><code>text</code> driver</th>
+                            </tr>
+                            <tr>
+                                <td colspan="2">The <code>text</code> driver will display the password strength as text - ranging from "ridiculus" over "good" to "very strong" and applying corresponding classes: <code>.text-danger</code>, <code>.text-warning</code> and <code>.text-success</code>. The <code>text</code> driver offers the below configuration options.</td>
+                            </tr>
+                            <tr>
+                                <td><code>container</code></td>
+                                <td>
+                                    <p>
+                                        The container the text is displayed in. Usually, a <code>div</code> or <code>span</code> near the corresponding password input is a good choice. An example can be seen in <a href="#getting-started">Getting Started</a>.
+                                    </p>
+                                    
+                                    <p class="alert alert-info">
+                                        Per default, the text will be appended to the password input's parent element.
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><code>hierarchy</code></td>
+                                <td>
+                                    <p>
+                                        This option allows to control the text begin displayed and the class being applied on its parent <code>span</code>. The default settings look as follows:
+                                    </p>
+                                    
+<pre class="prettyprint linenums">
+hierarchy: {
+    '0': ['text-danger', 'ridiculus'],
+    '10': ['text-danger', 'very weak'],
+    '20': ['text-warning', 'weak'],
+    '30': ['text-warning', 'good'],
+    '40': ['text-success', 'strong'],
+    '50': ['text-success', 'very strong']
+}
+</pre>
+                                    <p>
+                                        The keys refer to the score needed to change the text and its corresponding class. This means that a password with a score between 10 and 20 will be declared as "very weak". For this purpose it is useful to understand what the score means: A score of $h$ means that a maximum of $2^h$ attempts are necessary to crack the password. The higher $h$ the stronger the password.
+                                    </p>
+                                    
+                                    <p>
+                                        An example is shown below (where relatively weak passwords are declared "strong"):
+                                    </p>
+                                    
+                                    <div class="example">
+                                        <script type="text/javascript">
+                                            $(document).ready(function() {
+                                                $('#example-text-hierarchy-input').strengthMeter('text', {
+                                                    container: $('#example-text-hierarchy-text'),
+                                                    hierarchy: {
+                                                        '0': ['text-danger', 'Think about a stronger password!'],
+                                                        '5': ['text-warning', 'Well, you are doing better ...'],
+                                                        '10': ['text-warning', 'Keep going ...'],
+                                                        '15': ['text-success', 'Ok, this will do!']
+                                                    }
+                                                });
+                                            });
+                                        </script>
+                                        <form class="form-horizontal">
+                                            <div class="form-group">
+                                                <label class="form-label col-sm-2">Password</label>
+                                                <div class="col-sm-4">
+                                                    <input type="text" placeholder="Password ..." class="form-control" id="example-text-hierarchy-input" />
+                                                </div>
+                                                <div class="col-sm-6" id="example-text-hierarchy-text" style="font-weight:bold;padding:6px 12px;">
+
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="highlight">
+<pre class="prettyprint linenums">
+&lt;script type=&quot;text/javascript&quot;&gt;
+    $(document).ready(function() {
+        $('#example-text-hierarchy-input').strengthMeter('text', {
+            container: $('#example-text-hierarchy-text'),
+            hierarchy: {
+                '0': ['text-danger', 'Think about a stronger password!'],
+                '5': ['text-warning', 'Well, you are doing better ...'],
+                '10': ['text-warning', 'Keep going ...'],
+                '15': ['text-success', 'Ok, this will do!']
+            }
+        });
+    });
+&lt;/script&gt;
+&lt;form class=&quot;form-horizontal&quot;&gt;
+    &lt;div class=&quot;form-group&quot;&gt;
+        &lt;label class=&quot;form-label col-sm-2&quot;&gt;Password&lt;/label&gt;
+        &lt;div class=&quot;col-sm-4&quot;&gt;
+            &lt;input type=&quot;text&quot; placeholder=&quot;Password ...&quot; class=&quot;form-control&quot; id=&quot;example-hierarchy-input&quot; /&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;col-sm-6&quot; id=&quot;example-text-hierarchy-text&quot; style=&quot;font-weight:bold;padding:6px 12px;&quot;&gt;
+
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/form&gt;
+</pre>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th colspan="2"><code>tooltip</code> driver</th>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <p>
+                                        The <code>tooltip</code> driver will display the password strength in a tooltip.
+                                    </p>
+                                    
+                                    <p class="alert alert-info">
+                                        This driver requires Twitter Bootstrap's <code>tooltip.js</code> to be included.
+                                    </p>
+                                    
+                                    <p>
+                                        A basic example of this driver can be seen below.
+                                    </p>
+                                    
+                                    <div class="example">
+                                        <script type="text/javascript">
+                                            $(document).ready(function() {
+                                                $('#example-tooltip').strengthMeter('tooltip');
+                                            });
+                                        </script>
+                                        <form class="form-horizontal">
+                                            <div class="form-group">
+                                                <label class="form-label col-sm-2">Password</label>
+                                                <div class="col-sm-4">
+                                                    <input type="text" placeholder="Password ..." class="form-control" id="example-tooltip" />
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="highlight">
+<pre class="prettyprint linenums">
+&lt;script type=&quot;text/javascript&quot;&gt;
+    $(document).ready(function() {
+        $('#example-tooltip').strengthMeter('tooltip');
+    });
+&lt;/script&gt;
+&lt;form class=&quot;form-horizontal&quot;&gt;
+    &lt;div class=&quot;form-group&quot;&gt;
+        &lt;label class=&quot;form-label col-sm-2&quot;&gt;Password&lt;/label&gt;
+        &lt;div class=&quot;col-sm-4&quot;&gt;
+            &lt;input type=&quot;text&quot; placeholder=&quot;Password ...&quot; class=&quot;form-control&quot; id=&quot;example-text-hierarchy-input&quot; /&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/form&gt;
+</pre>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><code>hierarchy</code></td>
+                                <td>
+                                    <p>
+                                        This option allows to control the text begin displayed. The default options look as follows:
+                                    </p>
+                                    
+<pre class="prettyprint linenums">
+hierarchy: {
+    '0': 'ridiculus',
+    '10': 'very weak',
+    '20': 'weak',
+    '30': 'good',
+    '40': 'string',
+    '50': 'very strong'
+}
+</pre>
+                                    
+                                    <p>
+                                        The keys refer to the score needed to change the text. This means that a password with a score between 10 and 20 will be declared as "very weak". For this purpose it is useful to understand what the score means: A score of $h$ means that a maximum of $2^h$ attempts are necessary to crack the password. The higher $h$ the stronger the password.
+                                    </p>
+                                    
+                                    <p>
+                                        An example is shown below (where relatively weak passwords are declared "strong"):
+                                    </p>
+                                    
+                                    <div class="example">
+                                        <script type="text/javascript">
+                                            $(document).ready(function() {
+                                                $('#example-tooltip-hierarchy').strengthMeter('tooltip', {
+                                                    hierarchy: {
+                                                        '0': ['Think about a stronger password!'],
+                                                        '5': ['Well, you are doing better ...'],
+                                                        '10': ['Keep going ...'],
+                                                        '15': ['Ok, this will do!']
+                                                    },
+                                                    tooltip: {
+                                                        viewport: '#example-tooltip-hierarchy-viewport'
+                                                    }
+                                                });
+                                            });
+                                        </script>
+                                        <form class="form-horizontal">
+                                            <div class="form-group">
+                                                <label class="form-label col-sm-2">Password</label>
+                                                <div class="col-sm-4" id="example-tooltip-hierarchy-viewport">
+                                                    <input type="text" placeholder="Password ..." class="form-control" id="example-tooltip-hierarchy" />
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="highlight">
+<pre class="prettyprint linenums">
+&lt;script type=&quot;text/javascript&quot;&gt;
+    $(document).ready(function() {
+        $('#example-tooltip-hierarchy').strengthMeter('tooltip', {
+            hierarchy: {
+                '0': ['text-danger', 'Think about a stronger password!'],
+                '5': ['text-warning', 'Well, you are doing better ...'],
+                '10': ['text-warning', 'Keep going ...'],
+                '15': ['text-success', 'Ok, this will do!']
+            },
+            tooltip: {
+                viewport: '#example-tooltip-hierarchy-viewport'
+            }
+        });
+    });
+&lt;/script&gt;
+&lt;form class=&quot;form-horizontal&quot;&gt;
+    &lt;div class=&quot;form-group&quot;&gt;
+        &lt;label class=&quot;form-label col-sm-2&quot;&gt;Password&lt;/label&gt;
+        &lt;div class=&quot;col-sm-4&quot; id=&quot;example-tooltip-hierarchy-viewport&quot;&gt;
+            &lt;input type=&quot;text&quot; placeholder=&quot;Password ...&quot; class=&quot;form-control&quot; id=&quot;example-tooltip-hierarchy&quot; /&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/form&gt;
+</pre>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th colspan="2"><code>progressBar</code> driver</th>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <p>
+                                        The <code>progressBar</code> driver will visualize the password strength as progress bar.
+                                    </p>
+                                    
+                                    <p>
+                                        A basic example is shown below.
+                                    </p>
+                                    
+                                    <div class="example">
+                                        <script type="text/javascript">
+                                            $(document).ready(function() {
+                                                $('#example-progress-bar').strengthMeter('progressBar', {
+                                                    container: $('#example-progress-bar-container')
+                                                });
+                                            });
+                                        </script>
+                                        <form class="form-horizontal">
+                                            <div class="form-group">
+                                                <label class="form-label col-sm-2">Password</label>
+                                                <div class="col-sm-4">
+                                                    <input type="text" placeholder="Password ..." class="form-control" id="example-progress-bar" />
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="form-label col-sm-2">Password Strength</label>
+                                                <div class="col-sm-4" id="example-progress-bar-container">
+                                                    
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="highlight">
+<pre class="prettyprint linenums">
+&lt;script type=&quot;text/javascript&quot;&gt;
+    $(document).ready(function() {
+        $('#example-progress-bar').strengthMeter('progressBar', {
+            container: $('#example-progress-bar-container')
+        });
+    });
+&lt;/script&gt;
+&lt;form class=&quot;form-horizontal&quot;&gt;
+    &lt;div class=&quot;form-group&quot;&gt;
+        &lt;label class=&quot;form-label col-sm-2&quot;&gt;Password&lt;/label&gt;
+        &lt;div class=&quot;col-sm-4&quot;&gt;
+            &lt;input type=&quot;text&quot; placeholder=&quot;Password ...&quot; class=&quot;form-control&quot; id=&quot;example-progress-bar&quot; /&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;form-group&quot;&gt;
+        &lt;label class=&quot;form-label col-sm-2&quot;&gt;Password Strength&lt;/label&gt;
+        &lt;div class=&quot;col-sm-4&quot; id=&quot;example-progress-bar-container&quot;&gt;
+
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/form&gt;
+</pre>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><code>container</code></td>
+                                <td>
+                                    <p>
+                                        The container element the progress bar is appended to.
+                                    </p>
+                                    <p>
+                                        An example can be found above.
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><code>hierarchy</code></td>
+                                <td>
+                                    <p>
+                                        This option allows to control the color of the progress bar. The default option looks as follows:
+                                    </p>
+                                    
+                                    <pre class="prettyprint linenums">
+hierarchy: {
+    '0': 'progress-bar-danger',
+    '25': 'progress-bar-warning',
+    '50': 'progress-bar-success'
+}
+                                    </pre>
+                                    
+                                    <p>
+                                        The keys refer to the score needed in order to change the color of the pgroess bar. This means that a password with a score between 0 and 25 is depicted as red (<code>progress-bar-danger</code>). For this purpose it is useful to understand what the score means: A score of $h$ means that a maximum of $2^h$ attempts are necessary to crack the password. The higher $h$ the stronger the password.
+                                    </p>
+                                    
+                                    <p>
+                                        An example is given below:
+                                    </p>
+                                    
+                                    <div class="example">
+                                        <script type="text/javascript">
+                                            $(document).ready(function() {
+                                                $('#example-progress-bar-hierarchy').strengthMeter('progressBar', {
+                                                    container: $('#example-progress-bar-hierarchy-container'),
+                                                    hierarchy: {
+                                                        '0': 'progress-bar-danger',
+                                                        '10': 'progress-bar-warning',
+                                                        '15': 'progress-bar-success'
+                                                    }
+                                                });
+                                            });
+                                        </script>
+                                        <form class="form-horizontal">
+                                            <div class="form-group">
+                                                <label class="form-label col-sm-2">Password</label>
+                                                <div class="col-sm-4">
+                                                    <input type="text" placeholder="Password ..." class="form-control" id="example-progress-bar-hierarchy" />
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="form-label col-sm-2">Password Strength</label>
+                                                <div class="col-sm-4" id="example-progress-bar-hierarchy-container">
+                                                    
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="highlight">
+<pre class="prettyprint linenums">
+&lt;script type=&quot;text/javascript&quot;&gt;
+    $(document).ready(function() {
+        $('#example-progress-bar-hierarchy').strengthMeter('progressBar', {
+            container: $('#example-progress-bar-hierarchy-container'),
+            hierarchy: {
+                '0': 'progress-bar-danger',
+                '10': 'progress-bar-warning',
+                '15': 'progress-bar-success'
+            }
+        });
+    });
+&lt;/script&gt;
+&lt;form class=&quot;form-horizontal&quot;&gt;
+    &lt;div class=&quot;form-group&quot;&gt;
+        &lt;label class=&quot;form-label col-sm-2&quot;&gt;Password&lt;/label&gt;
+        &lt;div class=&quot;col-sm-4&quot;&gt;
+            &lt;input type=&quot;text&quot; placeholder=&quot;Password ...&quot; class=&quot;form-control&quot; id=&quot;example-progress-bar-hierarchy&quot; /&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;form-group&quot;&gt;
+        &lt;label class=&quot;form-label col-sm-2&quot;&gt;Password Strength&lt;/label&gt;
+        &lt;div class=&quot;col-sm-4&quot; id=&quot;example-progress-bar-hierarchy-container&quot;&gt;
+
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/form&gt;
+</pre>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <div class="page-header">
+                        <h2 id="license">License</h2>
+                    </div>
+                    
+                    <dl>
+                        <dt>BSD 3-Clause License</dt>
+                        <dd>
+                            <p>Copyright (c) 2013 - 2018 David Stutz</p>
+                            <p>All rights reserved.</p>
+                            <p>
+                                Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+                            </p>
+                            <ul>
+                                <li>Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+                                <li>Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+                                <li>Neither the name of David Stutz nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+                            </ul>
+                            <p>
+                                THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+                            </p>
+                        </dd>
+                    </dl>
+                    
+                    <hr>
+                    <p>
+                        &copy; 2013 - 2018
+                        <a target="_blank" href="http://davidstutz.de">David Stutz</a> &mdash; <a target="_blank" href="http://opensource.org/licenses/BSD-3-Clause">BSD 3-Clause License</a> &mdash; <a href="https://davidstutz.de/impressum/">Impressum</a> &mdash; <a href="https://davidstutz.de/datenschutz/">Datenschutz</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
