@@ -135,6 +135,22 @@
         </div>
     </div>
 
+    
+        <div class="row m-0 pt-5 pb-5" style="border-bottom: 1px solid grey;">
+        <div class="col-md-12 text-center">
+            <h3 class="text-center">Переходьте за посиланнями:</h3>
+            </div>
+            <div class="col-md-6 text-center">
+                <a href="https://www.onaft.edu.ua" target="_blank"><img src="img/logo.png" alt="" style="width: 150x;"></a><br><br>
+                <a href="https://www.onaft.edu.ua" target="_blank"><h4>Університет</h4></a>
+            </div>
+            <div class="col-md-6 text-center">
+                <a href="http://www.kipik.onaft.edu.ua/index.php/ua/" target="_blank"><img src="img/logo_kipk.png" alt="" style="width: 150px;margin-top: 35px;"></a><br><br>
+                <a href="http://www.kipik.onaft.edu.ua/index.php/ua/" target="_blank"><h4 class="mt-3">Факультет</h4></a>
+            </div>
+        </div>
+  
+
     <footer class="page-footer pt-3 pb-3">
         <div class="content text-center">
             <div class="container-fluid text-center">
