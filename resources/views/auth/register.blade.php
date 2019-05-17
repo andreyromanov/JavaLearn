@@ -73,10 +73,10 @@
                             <div class="col-md-6">
                                 <select name="level" class="form-control">
                                     <option value="">---</option>
-                                    <option value="Ученик">Учень</option>
-                                    <option value="Младший специалист">Молодший спеціаліст</option>
+                                    <option value="Учень">Учень</option>
+                                    <option value="Молодший спеціаліст">Молодший спеціаліст</option>
                                     <option value="Бакалавр">Бакалавр</option>
-                                    <option value="Магистр">Магістр</option>
+                                    <option value="Магiстр">Магістр</option>
                                 </select>
                             </div>
                         </div>
