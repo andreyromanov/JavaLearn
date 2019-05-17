@@ -21,6 +21,25 @@
                     </button>
                 </a>
 
+                <hr>
+                    <h3 class="text-center">Переходьте за посиланнями:</h3>
+               <div class="row">
+                <div class="col-md-6 text-center">
+                    <a href="https://www.onaft.edu.ua" target="_blank"><img src="{{ asset('img/logo.png') }}" alt=""
+                            style="width: 150x;"></a><br><br>
+                    <a href="https://www.onaft.edu.ua" target="_blank">
+                        <h4>Університет</h4>
+                    </a>
+                </div>
+                <div class="col-md-6 text-center">
+                    <a href="http://www.kipik.onaft.edu.ua/index.php/ua/" target="_blank"><img style="margin-top: 60px;" 
+                            src="{{ asset('img/logo_kipk.png') }}" alt=""
+                            style="width: 150px;margin-top: 35px;"></a><br><br>
+                    <a href="http://www.kipik.onaft.edu.ua/index.php/ua/" target="_blank">
+                        <h4 style="margin-top: 30px;">Факультет</h4>
+                    </a>
+                </div>
+                </div>
             </div>
         </div>
     </div>
