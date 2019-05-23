@@ -144,4 +144,16 @@
         </div>
     </div>
 </div>
+<script type="text/javascript" src="{{ asset('bsmm/docs/js/jquery.js') }}"></script>
+  
+<script type="text/javascript" src="{{ asset('bsmm/password-score/dist/js/password-score.js') }}"></script>
+<script type="text/javascript" src="{{ asset('bsmm/password-score/dist/js/password-score-options.js') }}"></script>
+<script type="text/javascript" src="{{ asset('bsmm/dist/js/bootstrap-strength-meter.js') }}"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#example-progress-bar').strengthMeter('progressBar', {
+            container: $('#example-progress-bar-container')
+        });
+    });
+</script>
 @endsection

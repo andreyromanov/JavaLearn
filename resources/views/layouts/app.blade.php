@@ -24,6 +24,7 @@
             min-height: 200px !important;
         }
     </style>
+    <script src="{{ asset('js/app.js') }}"></script>
 </head>
 
 <body>
@@ -105,36 +106,23 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/script.js') }}"></script>
-    <script src="{{ asset('js/app.js') }}"></script>
-
-    <!-- подключаем jquery -->
-
     
 
-    <!-- подключаем сам summernote -->
-    <script type="text/javascript" src="{{ asset('bsmm/docs/js/jquery.js') }}"></script>
-  
-    <script type="text/javascript" src="{{ asset('bsmm/password-score/dist/js/password-score.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('bsmm/password-score/dist/js/password-score-options.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('bsmm/dist/js/bootstrap-strength-meter.js') }}"></script>
-   
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.7/summernote.js"></script>
+<!-- подключаем jquery -->
 
-    <script type="text/javascript">
-    $(document).ready(function() {
-        $('#example-progress-bar').strengthMeter('progressBar', {
-            container: $('#example-progress-bar-container')
-        });
-    });
+
+
+<!-- подключаем сам summernote -->
+
+<script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.7/summernote.js"></script>
+
+<script>
+$(document).ready(function() {
+    $('#text').summernote();
+});
 </script>
-    <script>
-        $(document).ready(function () {
-
-            $('#text').summernote();
 
 
-        });
-    </script>
 
 
 </body>
