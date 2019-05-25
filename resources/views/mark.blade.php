@@ -28,7 +28,7 @@
                     <a href="https://www.onaft.edu.ua" target="_blank"><img src="{{ asset('img/logo.png') }}" alt=""
                             style="width: 150x;"></a><br><br>
                     <a href="https://www.onaft.edu.ua" target="_blank">
-                        <h4>Університет</h4>
+                        <h4>ОНАХТ</h4>
                     </a>
                 </div>
                 <div class="col-md-6 text-center">
@@ -36,7 +36,7 @@
                             src="{{ asset('img/logo_kipk.png') }}" alt=""
                             style="width: 150px;margin-top: 35px;"></a><br><br>
                     <a href="http://www.kipik.onaft.edu.ua/index.php/ua/" target="_blank">
-                        <h4 style="margin-top: 30px;">Факультет</h4>
+                        <h4 style="margin-top: 30px;">ФКIПтаК</h4>
                     </a>
                 </div>
                 </div>

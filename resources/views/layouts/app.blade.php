@@ -58,14 +58,12 @@
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->
                         @guest
-                        <li><a href="/themes">Теми</a></li>
-                        <li><a href="/results">Результати</a></li>
+                        <li><a href="/themes">Навчання</a></li>
                         <li><a href="{{ route('login') }}">Увійти</a></li>
                         <li><a href="{{ route('register') }}">Зареєструватися</a></li>
                         @else
                         @if(Auth::user()->role == "student")
-                        <li><a href="{{ url('/student/themes') }}">Теми</a></li>
-                        <li><a href="/results">Результати</a></li>
+                        <li><a href="{{ url('/student/themes') }}">Навчання</a></li>
                         <li><a href="{{ url('/home') }}">Профіль</a></li>
                         @else
                         <li><a href="{{ url('/teacher/themes') }}">Мої теми</a></li>

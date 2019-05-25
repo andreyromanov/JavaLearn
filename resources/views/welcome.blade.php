@@ -38,10 +38,7 @@
                 <ul class="navbar-nav navbar-right">
                     @guest
                     <li class="nav-item mr-3">
-                        <a class="nav-link text-white" href="/themes">Теми</a>
-                    </li>
-                    <li class="nav-item mr-3">
-                        <a class="nav-link text-white" href="/results">Результати</a>
+                        <a class="nav-link text-white" href="/themes">Навчання</a>
                     </li>
                     <li class="nav-item mr-3">
                         <a class="nav-link text-white" href="{{ route('login') }}">Увійти</a>
@@ -54,10 +51,7 @@
                     @if(Auth::user()->role == "student")
 
                     <li class="nav-item mr-3">
-                        <a class="nav-link text-white" href="/student/themes">Теми</a>
-                    </li>
-                    <li class="nav-item mr-3">
-                        <a class="nav-link text-white" href="/results">Результати</a>
+                        <a class="nav-link text-white" href="/student/themes">Навчання</a>
                     </li>
                     <li class="nav-item mr-3">
                         <a class="nav-link text-white" href="/home">Профіль</a>
