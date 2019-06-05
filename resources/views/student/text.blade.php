@@ -12,8 +12,16 @@
             {!!$themeText->theme_text!!}
           </p>
           <div class="col-md-12 text-center">
+            @guest
             <a style="text-decoration: none; color:white" href="test/{{$themeText->theme_id}}"><button type="button"
                 class="btn btn-primary btn-lg text-center" style="margin-top: 20px;">Почати тест</button></a>
+            @else
+            @if(Auth::user()->role == "admin")
+            @elseif(Auth::user()->role == "student")
+            <a style="text-decoration: none; color:white" href="test/{{$themeText->theme_id}}"><button type="button"
+                class="btn btn-primary btn-lg text-center" style="margin-top: 20px;">Почати тест</button></a>
+            @endif
+            @endguest
           </div>
         </div>
       </div>

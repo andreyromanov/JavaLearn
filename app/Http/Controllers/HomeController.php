@@ -25,10 +25,20 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $studRole = 'student';
+        $teachRole = 'teacher';
         $user = Auth::user();
         $test =  DB::table('Topic')->JOIN('Testing', 'Topic.theme_id', '=', 'Testing.theme_id')->where('testing.users_id', $user->id)->get();
         $teachtest=DB::table('Topic')->JOIN('Testing', 'Topic.theme_id', '=', 'Testing.theme_id')->JOIN('users','Testing.users_id','=','users.id')->where('Topic.users_id', $user->id)->get();
+        $students = DB::table('users')->where('role', $studRole)->get();
+        $teachers = DB::table('users')->where('role', $teachRole)->get();
 
-        return view('home',['test'=>$test,'teachtest'=>$teachtest]);
+        return view('home',['test'=>$test,'teachtest'=>$teachtest, 'students'=>$students, 'teachers'=>$teachers]);
+    }
+
+    public function delete($id)
+    {
+        DB::table('users')->where('id', $id)->delete();
+        return redirect()->action('HomeController@index');
     }
 }

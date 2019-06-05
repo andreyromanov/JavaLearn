@@ -20,12 +20,55 @@
         body {
             font-family: 'NunitoSansRegular' !important;
         }
+        #return-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: rgb(0, 0, 0);
+    background: rgba(0, 0, 0, 0.7);
+    width: 50px;
+    height: 50px;
+    display: block;
+    text-decoration: none;
+    -webkit-border-radius: 35px;
+    -moz-border-radius: 35px;
+    border-radius: 35px;
+    display: none;
+    -webkit-transition: all 0.3s linear;
+    -moz-transition: all 0.3s ease;
+    -ms-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+#return-to-top i {
+    color: #fff;
+    margin: 0;
+    position: relative;
+    left: 16px;
+    top: 13px;
+    font-size: 19px;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -ms-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+#return-to-top:hover {
+    background: rgba(0, 0, 0, 0.9);
+}
+#return-to-top:hover i {
+    color: #fff;
+    top: 5px;
+}
+
     </style>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
         integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 </head>
 
 <body>
+<!-- Return to Top -->
+<a href="javascript:" id="return-to-top"><i class="fas fa-chevron-up"></i></a>
     <div class="content bg">
         <nav class="navbar navbar-expand-lg navbar-light bg-light bg-tr">
             <a class="navbar-brand text-white" href="/">JavaLearn</a>
@@ -52,6 +95,16 @@
 
                     <li class="nav-item mr-3">
                         <a class="nav-link text-white" href="/student/themes">Навчання</a>
+                    </li>
+                    <li class="nav-item mr-3">
+                        <a class="nav-link text-white" href="/home">Профіль</a>
+                    </li>
+                    @elseif(Auth::user()->role == "admin")
+                    <li class="nav-item mr-3">
+                        <a class="nav-link text-white" href="/student/themes">Навчання</a>
+                    </li>
+                    <li class="nav-item mr-3">
+                        <a class="nav-link text-white" href="/results">Результати</a>
                     </li>
                     <li class="nav-item mr-3">
                         <a class="nav-link text-white" href="/home">Профіль</a>
@@ -120,6 +173,7 @@
                 @else
                 @if ( Auth::user()->role=="teacher")
                 <a href="/teacher/themes" class="gradient-button w-button mr-3 text-white mb-5">Теорія</a>
+                @elseif ( Auth::user()->role=="admin")
                 @else
                 <a href="/student/themes" class="gradient-button w-button mr-3 text-white mb-5">Теорія</a>
 
@@ -155,7 +209,21 @@
 
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.2/modernizr.js"></script>
-
+<script>
+// ===== Scroll to Top ==== 
+$(window).scroll(function() {
+    if ($(this).scrollTop() >= 50) {        // If page is scrolled more than 50px
+        $('#return-to-top').fadeIn(200);    // Fade in the arrow
+    } else {
+        $('#return-to-top').fadeOut(200);   // Else fade out the arrow
+    }
+});
+$('#return-to-top').click(function() {      // When arrow is clicked
+    $('body,html').animate({
+        scrollTop : 0                       // Scroll to top of body
+    }, 500);
+});
+</script>
 </body>
 
 </html>
