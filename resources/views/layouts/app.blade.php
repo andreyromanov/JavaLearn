@@ -111,7 +111,7 @@
                         <li><a href="{{ url('/student/themes') }}">Навчання</a></li>
                         <li><a href="{{ url('/home') }}">Профіль</a></li>
                         @elseif(Auth::user()->role == "admin")
-                        <li><a href="{{ url('/student/themes') }}">Навчання</a></li>
+                        <li><a href="{{ url('/allthemes') }}">Навчання</a></li>
                         <li><a href="/results">Результати</a></li>
                         <li><a href="{{ url('/home') }}">Профіль</a></li>
                         @else

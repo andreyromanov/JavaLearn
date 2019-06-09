@@ -101,7 +101,7 @@
                     </li>
                     @elseif(Auth::user()->role == "admin")
                     <li class="nav-item mr-3">
-                        <a class="nav-link text-white" href="/student/themes">Навчання</a>
+                        <a class="nav-link text-white" href="/allthemes">Навчання</a>
                     </li>
                     <li class="nav-item mr-3">
                         <a class="nav-link text-white" href="/results">Результати</a>

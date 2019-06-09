@@ -36,6 +36,14 @@ class HomeController extends Controller
         return view('home',['test'=>$test,'teachtest'=>$teachtest, 'students'=>$students, 'teachers'=>$teachers]);
     }
 
+    public function show()
+    {
+
+        $themes = DB::table('Topic')->JOIN('users', 'Topic.users_id', '=', 'users.id')->get();;
+
+        return view('allthemes',['themes' => $themes]);
+    }
+
     public function delete($id)
     {
         DB::table('users')->where('id', $id)->delete();

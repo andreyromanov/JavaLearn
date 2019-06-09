@@ -49,3 +49,4 @@ Route::get('/teacher/themes/edit/{teachTheme}','TeachThemeController@edit');
 Route::post('/teacher/themes/update/{teachTheme}','TeachThemeController@update');
 
 Route::get('/user/delete/{id}','HomeController@delete');
+Route::get('/allthemes', 'HomeController@show');
